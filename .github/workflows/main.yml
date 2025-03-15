@@ -27,32 +27,36 @@ jobs:
           --metadata title="Project Documentation" \
           --standalone \
           -V header-includes='<script src="https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"></script><style>.mermaid-container { overflow: auto; width: 100%; height: 90vh; border: 1px solid #ddd; background: white; } body { font-family: Arial, sans-serif; text-align: center; background-color: #f8f9fa; } h1, h2 { font-size: 24px; }</style>'
-          # Debug: Show the initial Mermaid code block
-          echo "HTML before sed commands - Mermaid section:"
-          grep -A 10 "<pre><code class=\"language-mermaid\"" index.html || echo "No mermaid code block found"
+          # Debug: Show the entire HTML around the Family Tree Diagram section
+          echo "HTML before sed commands - Family Tree Diagram section:"
+          grep -B 5 -A 50 "<h2 id=\"family-tree-diagram\">" index.html || echo "Family Tree Diagram section not found"
           # Debug: Show the <head> section to verify script inclusion
           echo "HTML <head> section before modifications:"
           grep -A 5 "<head>" index.html
 
       - name: Fix Mermaid class in index.html
         run: |
-          # Debug: Show the exact line we're trying to replace
-          echo "Before sed - Full Mermaid code block:"
-          grep -A 50 "<pre><code class=\"language-mermaid\"" index.html || echo "No mermaid code block found"
-          # Replace <pre><code class="language-mermaid"> with <div class="mermaid-container"><div class="mermaid">
+          # Debug: Show any code blocks that might contain Mermaid
+          echo "Before sed - Any code blocks with 'mermaid':"
+          grep -A 50 "<pre>" index.html | grep -B 5 -A 50 "mermaid" || echo "No mermaid-related code block found"
+          # Replace variations of Mermaid code blocks with <div class="mermaid-container"><div class="mermaid">
           sed -i 's/<pre><code class="language-mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid">/g' index.html
-          # Replace </code></pre> with </div></div>
+          sed -i 's/<pre><code class="mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid">/g' index.html
+          sed -i 's/<pre class="language-mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid">/g' index.html
+          sed -i 's/<pre class="mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid">/g' index.html
+          # Replace closing tags
           sed -i 's/<\/code><\/pre>/<\/div><\/div>/g' index.html
+          sed -i 's/<\/pre>/<\/div><\/div>/g' index.html
           # Debug: Show the modified Mermaid code block
           echo "After sed - Modified Mermaid code block:"
           grep -A 50 "<div class=\"mermaid-container\"" index.html || echo "No mermaid container found after sed"
-          # Append the updated Mermaid initialization script with enhanced logging
+          # Append the Mermaid initialization script with detailed logging
           echo '<script>document.addEventListener("DOMContentLoaded", function() { console.log("Mermaid script loaded. Initializing..."); try { mermaid.initialize({ startOnLoad: false }); console.log("Mermaid initialized. Starting render..."); setTimeout(() => { const mermaidElements = document.querySelectorAll(".mermaid"); console.log("Found", mermaidElements.length, "Mermaid elements"); mermaid.run().then(() => console.log("Mermaid rendering completed successfully")).catch(error => console.error("Mermaid rendering failed:", error)); }, 100); } catch (e) { console.error("Mermaid initialization failed:", e); } });</script>' >> index.html
           # Debug: Show the final <head> and <body> sections
           echo "Final HTML <head> section:"
           grep -A 5 "<head>" index.html
           echo "Final HTML <body> section (Mermaid and script):"
-          grep -A 50 "<div class=\"mermaid-container\"" index.html || echo "No mermaid container found in final HTML"
+          grep -B 5 -A 50 "<div class=\"mermaid-container\"" index.html || echo "No mermaid container found in final HTML"
           grep -A 5 "<script>document.addEventListener" index.html || echo "No initialization script found"
 
       - name: Setup gh-pages branch
