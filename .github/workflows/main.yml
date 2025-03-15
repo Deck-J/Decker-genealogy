@@ -43,6 +43,7 @@ jobs:
           # Clean up and switch branches
           git fetch origin gh-pages || true
           git checkout gh-pages || git checkout --orphan gh-pages
+          git pull origin gh-pages || true  # Pull the latest changes to avoid conflicts
           git rm -rf . || true  # Remove all tracked files in the branch
 
           # Restore the index.html file
@@ -57,7 +58,7 @@ jobs:
           git config user.email "actions@github.com"
           git add .
           git commit -m "Deploy updated README to GitHub Pages" || true
-          git push origin gh-pages
+          git push origin gh-pages --force  # Force push to override outdated commits
 
       - name: Output Deployment URL
         run: |
