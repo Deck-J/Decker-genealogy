@@ -26,7 +26,7 @@ jobs:
       - name: Install Pandoc
         run: sudo apt-get install -y pandoc
 
-      # Step 3: Convert README.md to index.html with Mermaid diagram support
+      # Step 3: Convert README.md to index.html with Mermaid support
       - name: Convert README.md to index.html with Mermaid support
         run: |
           # Use Pandoc to convert README.md to a standalone HTML file
@@ -36,21 +36,28 @@ jobs:
           --metadata title="Project Documentation" \
           --standalone \
           -V header-includes='<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: true});</script>'
+          # Debug: Confirm index.html exists
+          ls -l index.html
 
       # Step 4: Setup the gh-pages branch, handling both existing and new cases
       - name: Setup gh-pages branch
         run: |
+          # Debug: Show current branch before setup
+          echo "Current branch before setup: $(git branch --show-current)"
           # Temporarily move index.html to /tmp to preserve it during branch switch
           mv index.html /tmp/index.html
-          # Try to fetch gh-pages from origin; if it fails, create a new orphan branch
-          # An orphan branch has no history, and git rm -rf . clears the working directory
-          git fetch origin gh-pages || (git checkout --orphan gh-pages && git rm -rf .)
+          # Try to fetch and checkout gh-pages; if it fails, create a new orphan branch
+          git fetch origin gh-pages && git checkout gh-pages || (git checkout --orphan gh-pages && git rm -rf .)
           # Move index.html back from /tmp to the current working directory
           mv /tmp/index.html .
+          # Debug: Show current branch after setup
+          echo "Current branch after setup: $(git branch --show-current)"
 
       # Step 5: Commit and push changes to gh-pages branch
       - name: Commit and Push Changes
         run: |
+          # Debug: Show current branch before commit
+          echo "Current branch before commit: $(git branch --show-current)"
           # Configure Git user info for the commit
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
