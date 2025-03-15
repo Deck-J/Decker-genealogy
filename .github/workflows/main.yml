@@ -1,87 +1,57 @@
 name: Publish README to GitHub Pages
 
-# Trigger the workflow when code is pushed to the main branch
 on:
   push:
     branches:
       - main
 
-# Grant write permissions to the repository contents for pushing to gh-pages
 permissions:
   contents: write
 
 jobs:
   deploy:
-    # Use the latest Ubuntu runner for this job
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the main branch of the repository
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: main  # Explicitly checkout the main branch
+          ref: main
 
-      # Step 2: Install Pandoc, a tool to convert Markdown to HTML
       - name: Install Pandoc
         run: sudo apt-get install -y pandoc
 
-      # Step 3: Convert README.md to index.html with Mermaid support
       - name: Convert README.md to index.html with Mermaid support
         run: |
-          # Convert README.md to HTML with Pandoc
-          # --metadata sets the page title
-          # --standalone creates a full HTML document
-          # -V header-includes adds the Mermaid.js script
           pandoc README.md -o index.html \
           --metadata title="Project Documentation" \
           --standalone \
           -V header-includes='<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>'
 
-      # Step 4: Fix Mermaid class for rendering
       - name: Fix Mermaid class in index.html
         run: |
-          # Replace <pre><code class="language-mermaid"> with <pre class="mermaid">
-          # This ensures Mermaid.js recognizes and renders the diagram
           sed -i 's/<pre><code class="language-mermaid">/<pre class="mermaid">/g' index.html
-          # Replace the closing </code></pre> with </pre>
           sed -i 's/<\/code><\/pre>/<\/pre>/g' index.html
-          # Add an enhanced initialization script at the end of the body
           echo '<script>document.addEventListener("DOMContentLoaded", function() { mermaid.initialize({startOnLoad: true}); });</script>' >> index.html
-          # Debug: Show the updated HTML in the logs
           cat index.html
 
-      # Step 5: Setup the gh-pages branch, handling both existing and new cases
       - name: Setup gh-pages branch
         run: |
-          # Debug: Show current branch before setup
           echo "Current branch before setup: $(git branch --show-current)"
-          # Temporarily move index.html to /tmp to preserve it during branch switch
           mv index.html /tmp/index.html
-          # Try to fetch and checkout gh-pages; if it fails, create a new orphan branch
           git fetch origin gh-pages && git checkout gh-pages || (git checkout --orphan gh-pages && git rm -rf .)
-          # Move index.html back from /tmp to the current working directory
           mv /tmp/index.html .
-          # Debug: Show current branch after setup
           echo "Current branch after setup: $(git branch --show-current)"
 
-      # Step 6: Commit and push changes to gh-pages branch
       - name: Commit and Push Changes
         run: |
-          # Debug: Show current branch before commit
           echo "Current branch before commit: $(git branch --show-current)"
-          # Configure Git user info for the commit
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          # Add index.html to the staging area
           git add index.html
-          # Commit changes; if no changes, print a message and continue
           git commit -m "Update index.html with latest README" || echo "No changes to commit"
-          # Push the gh-pages branch to the remote repository
           git push origin gh-pages
 
-      # Step 7: Display the expected GitHub Pages URL
       - name: Output GitHub Pages URL
         run: |
-          # Use GitHub environment variables to construct the URL
           echo "The deployed site should be available at: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
