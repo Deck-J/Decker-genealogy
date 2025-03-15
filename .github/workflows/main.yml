@@ -3,7 +3,9 @@ name: Deploy README to GitHub Pages
 on:
   push:
     branches:
-      - main  # Change this to the branch you are using
+      - main  # Change if your primary branch is different
+    paths:
+      - "README.md"  # Trigger only when README.md is changed
 
 permissions:
   contents: read
@@ -15,13 +17,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Install Pandoc
         run: sudo apt-get install -y pandoc
 
-      - name: Convert README.md to index.html
+      - name: Convert README.md to HTML
         run: |
           mkdir -p docs
           echo '<!DOCTYPE html>
@@ -35,18 +37,16 @@ jobs:
                   mermaid.initialize({ startOnLoad: true });
               </script>
               <style>
-                  body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }
-                  h1, h2, h3 { color: #333; }
-                  pre { background: #f4f4f4; padding: 10px; border-radius: 5px; }
-                  .mermaid { text-align: center; margin-top: 20px; }
+                  body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 20px; }
+                  pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
               </style>
           </head>
           <body>
               <article>' > docs/index.html
-          pandoc README.md -f markdown -t html >> docs/index.html
+          pandoc README.md -f markdown -t html --metadata title="Decker Family Survey" >> docs/index.html
           echo '</article></body></html>' >> docs/index.html
 
-      - name: Upload Artifact
+      - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v2
         with:
           path: docs
