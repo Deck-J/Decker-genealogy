@@ -1,80 +1,53 @@
-name: Deploy README to GitHub Pages
+name: Deploy GitHub Pages
 
 on:
   push:
     branches:
-      - main  # Adjust if your primary branch is different
-    paths:
-      - "README.md"  # Trigger only when README.md is changed
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+      - main  # Change if your default branch is different
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Install Pandoc
-        run: sudo apt-get install -y pandoc
-
-      - name: Convert README.md to index.html
-        run: |
-          mkdir -p docs
-          echo '<!DOCTYPE html>
-          <html lang="en">
-          <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Decker Family Survey</title>
-              <script type="module">
-                  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-                  mermaid.initialize({ startOnLoad: true });
-              </script>
-              <style>
-                  body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 20px; }
-                  pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
-                  code.language-mermaid { display: block; background: none; padding: 0; }
-              </style>
-          </head>
-          <body>
-              <article>' > docs/index.html
-          
-          # Convert README.md to HTML
-          pandoc README.md -f markdown -t html --metadata title="Decker Family Survey" >> docs/index.html
-          
-          echo '</article>
-          <script>
-              document.addEventListener("DOMContentLoaded", function() {
-                  mermaid.initialize({ startOnLoad: true });
-                  document.querySelectorAll("code.language-mermaid").forEach(el => {
-                      let pre = el.parentElement;
-                      let newDiv = document.createElement("div");
-                      newDiv.classList.add("mermaid");
-                      newDiv.textContent = el.textContent;
-                      pre.replaceWith(newDiv);
-                  });
-                  mermaid.init();
-              });
-          </script>
-          </body></html>' >> docs/index.html
-
-          touch docs/.nojekyll  # Disable Jekyll for correct rendering
-
-      - name: Upload artifact for GitHub Pages
-        uses: actions/upload-pages-artifact@v2  # ✅ Correct action
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          path: docs  # Upload docs/ directory (including index.html and .nojekyll)
+          ruby-version: '3.1'  # Ensure Ruby version is compatible
+          bundler-cache: true
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
+      - name: Install Jekyll & Dependencies
+        run: |
+          gem install jekyll bundler
+          bundle install
 
-    steps:
+      - name: Build Jekyll Site
+        run: JEKYLL_ENV=production bundle exec jekyll build
+
+      - name: Inject Mermaid.js for Rendering
+        run: |
+          echo "<script type='module'>
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+            mermaid.initialize({ startOnLoad: true });
+
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('pre code.language-mermaid').forEach((block) => {
+                    const mermaidDiv = document.createElement('div');
+                    mermaidDiv.classList.add('mermaid');
+                    mermaidDiv.textContent = block.textContent;
+                    block.parentElement.replaceWith(mermaidDiv);
+                });
+                mermaid.init();
+            });
+          </script>" >> _site/index.html
+
+      - name: Upload GitHub Pages Artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: _site
+
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2  # ✅ Correct action
+        uses: actions/deploy-pages@v2
