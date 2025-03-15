@@ -30,10 +30,12 @@ jobs:
 
       - name: Setup gh-pages branch
         run: |
+          # Store index.html temporarily
+          mv index.html /tmp/index.html
+          # Setup gh-pages branch
           git fetch origin gh-pages || (git checkout --orphan gh-pages && git rm -rf .)
-
-      - name: Move new index.html to gh-pages branch
-        run: mv index.html .
+          # Move index.html back to working directory
+          mv /tmp/index.html .
 
       - name: Commit and Push Changes
         run: |
