@@ -33,16 +33,25 @@ jobs:
           # --metadata sets the page title
           # --standalone creates a full HTML document
           # -V header-includes adds the Mermaid.js script
-          # -V footer adds the Mermaid initialization script after content
           pandoc README.md -o index.html \
           --metadata title="Project Documentation" \
           --standalone \
-          -V header-includes='<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>' \
-          -V footer='<script>mermaid.initialize({startOnLoad: true});</script>'
-          # Debug: Show the generated HTML in the logs
+          -V header-includes='<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>'
+
+      # Step 4: Fix Mermaid class for rendering
+      - name: Fix Mermaid class in index.html
+        run: |
+          # Replace <pre><code class="language-mermaid"> with <pre class="mermaid">
+          # This ensures Mermaid.js recognizes and renders the diagram
+          sed -i 's/<pre><code class="language-mermaid">/<pre class="mermaid">/g' index.html
+          # Replace the closing </code></pre> with </pre>
+          sed -i 's/<\/code><\/pre>/<\/pre>/g' index.html
+          # Add an enhanced initialization script at the end of the body
+          echo '<script>document.addEventListener("DOMContentLoaded", function() { mermaid.initialize({startOnLoad: true}); });</script>' >> index.html
+          # Debug: Show the updated HTML in the logs
           cat index.html
 
-      # Step 4: Setup the gh-pages branch, handling both existing and new cases
+      # Step 5: Setup the gh-pages branch, handling both existing and new cases
       - name: Setup gh-pages branch
         run: |
           # Debug: Show current branch before setup
@@ -56,7 +65,7 @@ jobs:
           # Debug: Show current branch after setup
           echo "Current branch after setup: $(git branch --show-current)"
 
-      # Step 5: Commit and push changes to gh-pages branch
+      # Step 6: Commit and push changes to gh-pages branch
       - name: Commit and Push Changes
         run: |
           # Debug: Show current branch before commit
@@ -71,7 +80,7 @@ jobs:
           # Push the gh-pages branch to the remote repository
           git push origin gh-pages
 
-      # Step 6: Display the expected GitHub Pages URL
+      # Step 7: Display the expected GitHub Pages URL
       - name: Output GitHub Pages URL
         run: |
           # Use GitHub environment variables to construct the URL
