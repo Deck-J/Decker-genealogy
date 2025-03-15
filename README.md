@@ -1,5 +1,12 @@
 ## Decker Family  Survey
 
+## Family Tree Diagram
+
+```mermaid
+flowchart TD
+    A[Start] --> B[End]
+```
+
 ## Table of Contents
 - [Executive Summary](#executive-summary)
 - [I. European Origins and Early American Settlement](#i-european-origins-and-early-american-settlement)
