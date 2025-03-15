@@ -26,7 +26,7 @@ jobs:
           pandoc README.md -o index.html \
           --metadata title="Project Documentation" \
           --standalone \
-          -V header-includes='<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script><style>.mermaid-container { overflow: auto; width: 100%; height: 90vh; border: 1px solid #ddd; background: white; } body { font-family: Arial, sans-serif; text-align: center; background-color: #f8f9fa; } h1, h2 { font-size: 24px; }</style>'
+          -V header-includes='<script src="https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"></script><style>.mermaid-container { overflow: auto; width: 100%; height: 90vh; border: 1px solid #ddd; background: white; } body { font-family: Arial, sans-serif; text-align: center; background-color: #f8f9fa; } h1, h2 { font-size: 24px; }</style>'
           # Debug: Show the entire HTML around the Family Tree Diagram section
           echo "HTML before sed commands - Family Tree Diagram section:"
           grep -B 5 -A 50 "<h2 id=\"family-tree-diagram\">" index.html || echo "Family Tree Diagram section not found"
@@ -43,12 +43,12 @@ jobs:
           echo "Before sed - Any code blocks with 'mermaid' or 'flowchart':"
           grep -A 50 "<pre>" index.html | grep -B 5 -A 50 "mermaid\|flowchart" || echo "No mermaid-related code block found"
           # Replace variations of Mermaid code blocks with <div class="mermaid-container"><div class="mermaid">
-          sed -i 's/<pre><code class="language-mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid">/g' index.html
-          sed -i 's/<pre><code class="mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid">/g' index.html
-          sed -i 's/<pre class="language-mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid">/g' index.html
-          sed -i 's/<pre class="mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid">/g' index.html
+          sed -i 's/<pre><code class="language-mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid" id="mermaid-diagram-1">/g' index.html
+          sed -i 's/<pre><code class="mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid" id="mermaid-diagram-2">/g' index.html
+          sed -i 's/<pre class="language-mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid" id="mermaid-diagram-3">/g' index.html
+          sed -i 's/<pre class="mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid" id="mermaid-diagram-4">/g' index.html
           # Replace any <pre> block containing "flowchart TD" (in case the class is missing)
-          sed -i '/<pre>/,/<\/pre>/ s/<pre>/<div class="mermaid-container"><div class="mermaid">/g' index.html
+          sed -i '/<pre>/,/<\/pre>/ s/<pre>/<div class="mermaid-container"><div class="mermaid" id="mermaid-diagram-5">/g' index.html
           # Explicitly remove <code> tags within the diagram content
           sed -i 's/<code>\(flowchart TD\)/\1/g' index.html
           # Replace closing tags
@@ -57,8 +57,8 @@ jobs:
           # Debug: Show the modified Mermaid code block
           echo "After sed - Modified Mermaid code block:"
           grep -B 5 -A 50 "<div class=\"mermaid-container\"" index.html || echo "No mermaid container found after sed"
-          # Append the updated Mermaid initialization script with refined rendering approach
-          echo '<script>document.addEventListener("DOMContentLoaded", function() { console.log("Mermaid script loaded. Initializing..."); try { mermaid.initialize({ startOnLoad: false }); console.log("Mermaid initialized. Starting render..."); setTimeout(() => { const mermaidElements = document.querySelectorAll(".mermaid"); console.log("Found", mermaidElements.length, "Mermaid elements with content:", mermaidElements[0] ? mermaidElements[0].textContent.substring(0, 50) : "none"); if (mermaidElements.length > 0) { mermaidElements.forEach(element => { mermaid.render("mermaid-" + element.id, element.textContent, (svgCode, bindFunctions) => { element.innerHTML = svgCode; if (bindFunctions) bindFunctions(element); console.log("Mermaid rendering completed for element", element.id); }); }); } else { console.warn("No Mermaid elements found to render."); } }, 3000); } catch (e) { console.error("Mermaid initialization failed:", e); } });</script>' >> index.html
+          # Append the updated Mermaid initialization script with simpler approach
+          echo '<script>document.addEventListener("DOMContentLoaded", function() { console.log("Mermaid script loaded. Initializing..."); try { mermaid.initialize({ startOnLoad: true }); console.log("Mermaid initialized. Waiting for automatic render..."); setTimeout(() => { const mermaidElements = document.querySelectorAll(".mermaid"); console.log("Found", mermaidElements.length, "Mermaid elements with content:", mermaidElements[0] ? mermaidElements[0].textContent.substring(0, 50) : "none"); if (mermaidElements.length === 0) { console.warn("No Mermaid elements found to render."); } }, 3000); } catch (e) { console.error("Mermaid initialization failed:", e); } });</script>' >> index.html
           # Debug: Show the final <head> and <body> sections
           echo "Final HTML <head> section:"
           grep -A 5 "<head>" index.html
