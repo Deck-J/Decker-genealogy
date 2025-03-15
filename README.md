@@ -1,4 +1,4 @@
-## Decker Family Background
+## Decker Family
 
 ## Family Tree Diagram
 
