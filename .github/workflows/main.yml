@@ -1,0 +1,48 @@
+name: Publish README to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Install Pandoc
+        run: sudo apt-get install -y pandoc
+
+      - name: Convert README.md to index.html with Mermaid support
+        run: |
+          pandoc README.md -o index.html \
+          --metadata title="Project Documentation" \
+          --standalone \
+          -V header-includes='<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: true});</script>'
+
+      - name: Checkout gh-pages branch
+        run: |
+          git fetch origin gh-pages || git checkout --orphan gh-pages
+          git checkout gh-pages
+
+      - name: Remove old index.html
+        run: rm -f index.html
+
+      - name: Move new index.html to gh-pages branch
+        run: mv ../index.html .
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add index.html
+          git commit -m "Update index.html with latest README" || echo "No changes to commit"
+          git push origin gh-pages
