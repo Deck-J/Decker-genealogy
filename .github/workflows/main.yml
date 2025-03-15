@@ -29,15 +29,18 @@ jobs:
       # Step 3: Convert README.md to index.html with Mermaid support
       - name: Convert README.md to index.html with Mermaid support
         run: |
-          # Use Pandoc to convert README.md to a standalone HTML file
+          # Convert README.md to HTML with Pandoc
           # --metadata sets the page title
-          # -V injects Mermaid.js script for diagram rendering
+          # --standalone creates a full HTML document
+          # -V header-includes adds the Mermaid.js script
+          # -V footer adds the Mermaid initialization script after content
           pandoc README.md -o index.html \
           --metadata title="Project Documentation" \
           --standalone \
-          -V header-includes='<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad: true});</script>'
-          # Debug: Confirm index.html exists
-          ls -l index.html
+          -V header-includes='<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>' \
+          -V footer='<script>mermaid.initialize({startOnLoad: true});</script>'
+          # Debug: Show the generated HTML in the logs
+          cat index.html
 
       # Step 4: Setup the gh-pages branch, handling both existing and new cases
       - name: Setup gh-pages branch
