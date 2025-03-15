@@ -43,7 +43,7 @@ jobs:
           mv ../index.html .
           touch .nojekyll
 
-      - name: Commit and Push
+      - name: Commit and Push Changes
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
@@ -52,4 +52,6 @@ jobs:
           git push origin gh-pages
 
       - name: Output Deployment URL
-        run: echo "Site available at: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+        run: |
+          echo "Site available at: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+
