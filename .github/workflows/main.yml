@@ -40,8 +40,8 @@ jobs:
       - name: Fix Mermaid class in index.html
         run: |
           # Debug: Show any code blocks that might contain Mermaid
-          echo "Before sed - Any code blocks with 'mermaid':"
-          grep -A 50 "<pre>" index.html | grep -B 5 -A 50 "mermaid" || echo "No mermaid-related code block found"
+          echo "Before sed - Any code blocks with 'mermaid' or 'flowchart':"
+          grep -A 50 "<pre>" index.html | grep -B 5 -A 50 "mermaid\|flowchart" || echo "No mermaid-related code block found"
           # Replace variations of Mermaid code blocks with <div class="mermaid-container"><div class="mermaid">
           sed -i 's/<pre><code class="language-mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid">/g' index.html
           sed -i 's/<pre><code class="mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid">/g' index.html
@@ -49,6 +49,8 @@ jobs:
           sed -i 's/<pre class="mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid">/g' index.html
           # Replace any <pre> block containing "flowchart TD" (in case the class is missing)
           sed -i '/<pre>/,/<\/pre>/ s/<pre>/<div class="mermaid-container"><div class="mermaid">/g' index.html
+          # Explicitly remove <code> tags within the diagram content
+          sed -i 's/<code>\(flowchart TD\)/\1/g' index.html
           # Replace closing tags
           sed -i 's/<\/code><\/pre>/<\/div><\/div>/g' index.html
           sed -i 's/<\/pre>/<\/div><\/div>/g' index.html
