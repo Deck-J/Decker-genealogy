@@ -30,6 +30,9 @@ jobs:
           # Debug: Show the entire HTML around the Family Tree Diagram section
           echo "HTML before sed commands - Family Tree Diagram section:"
           grep -B 5 -A 50 "<h2 id=\"family-tree-diagram\">" index.html || echo "Family Tree Diagram section not found"
+          # Debug: Show any <pre> or <code> blocks that might contain Mermaid content
+          echo "HTML before sed commands - All <pre> blocks:"
+          grep -B 5 -A 50 "<pre>" index.html || echo "No <pre> blocks found"
           # Debug: Show the <head> section to verify script inclusion
           echo "HTML <head> section before modifications:"
           grep -A 5 "<head>" index.html
@@ -44,13 +47,15 @@ jobs:
           sed -i 's/<pre><code class="mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid">/g' index.html
           sed -i 's/<pre class="language-mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid">/g' index.html
           sed -i 's/<pre class="mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid">/g' index.html
+          # Replace any <pre> block containing "flowchart TD" (in case the class is missing)
+          sed -i '/<pre>/,/<\/pre>/ s/<pre>/<div class="mermaid-container"><div class="mermaid">/g' index.html
           # Replace closing tags
           sed -i 's/<\/code><\/pre>/<\/div><\/div>/g' index.html
           sed -i 's/<\/pre>/<\/div><\/div>/g' index.html
           # Debug: Show the modified Mermaid code block
           echo "After sed - Modified Mermaid code block:"
-          grep -A 50 "<div class=\"mermaid-container\"" index.html || echo "No mermaid container found after sed"
-          # Append the Mermaid initialization script with detailed logging
+          grep -B 5 -A 50 "<div class=\"mermaid-container\"" index.html || echo "No mermaid container found after sed"
+          # Append the updated Mermaid initialization script with detailed logging
           echo '<script>document.addEventListener("DOMContentLoaded", function() { console.log("Mermaid script loaded. Initializing..."); try { mermaid.initialize({ startOnLoad: false }); console.log("Mermaid initialized. Starting render..."); setTimeout(() => { const mermaidElements = document.querySelectorAll(".mermaid"); console.log("Found", mermaidElements.length, "Mermaid elements"); mermaid.run().then(() => console.log("Mermaid rendering completed successfully")).catch(error => console.error("Mermaid rendering failed:", error)); }, 100); } catch (e) { console.error("Mermaid initialization failed:", e); } });</script>' >> index.html
           # Debug: Show the final <head> and <body> sections
           echo "Final HTML <head> section:"
