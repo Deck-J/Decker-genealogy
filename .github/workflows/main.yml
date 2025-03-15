@@ -15,60 +15,41 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: main
 
-      - name: Install Pandoc
-        run: sudo apt-get install -y pandoc
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
 
-      - name: Convert README.md to index.html with Mermaid support
+      - name: Generate HTML from README
         run: |
           pandoc README.md -o index.html \
             --metadata title="Project Documentation" \
             --standalone \
-            --preserve-tabs \
             --highlight-style=pygments \
             -V header-includes='<script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"; mermaid.initialize({ startOnLoad: true });</script><style>.mermaid-container { overflow: auto; width: 100%; height: 90vh; border: 1px solid #ddd; background: white; } body { font-family: Arial, sans-serif; text-align: center; background-color: #f8f9fa; } h1, h2 { font-size: 24px; }</style>'
 
-      - name: Debug: Show generated index.html
-        run: head -n 100 index.html
-
-      - name: Fix Mermaid Code Blocks in index.html
+      - name: Fix Mermaid Blocks
         run: |
-          echo "Before sed - Checking Mermaid code blocks:"
-          grep -A 50 "<pre>" index.html | grep -B 5 -A 50 "mermaid\|flowchart" || echo "No Mermaid code blocks found"
-
-          # Convert Mermaid blocks to <div class="mermaid">
           sed -i 's|<pre><code class="language-mermaid">|<div class="mermaid">|g' index.html
-          sed -i 's|<pre><code class="mermaid">|<div class="mermaid">|g' index.html
-          sed -i 's|<pre class="language-mermaid">|<div class="mermaid">|g' index.html
-          sed -i 's|<pre class="mermaid">|<div class="mermaid">|g' index.html
           sed -i 's|</code></pre>|</div>|g' index.html
-          sed -i 's|</pre>|</div>|g' index.html
+          echo '<script>document.addEventListener("DOMContentLoaded", function() {if (window.mermaid) {mermaid.init(undefined, document.querySelectorAll(".mermaid"));}});</script>' >> index.html
 
-          echo "After sed - Checking updated Mermaid blocks:"
-          grep -B 5 -A 50 "<div class=\"mermaid\"" index.html || echo "No Mermaid containers found"
-
-          # Add Mermaid reinitialization script
-          echo '<script>document.addEventListener("DOMContentLoaded", function() {setTimeout(() => {if (window.mermaid) {mermaid.init(undefined, document.querySelectorAll(".mermaid"));}}, 1000);});</script>' >> index.html
-
-      - name: Prepare GitHub Pages Deployment
+      - name: Switch to GitHub Pages Branch
         run: |
-          echo "Switching to gh-pages branch..."
-          mv index.html /tmp/index.html
-          git fetch origin gh-pages && git checkout gh-pages || (git checkout --orphan gh-pages && git rm -rf .)
-          mv /tmp/index.html .
-          touch .nojekyll  # Ensure Jekyll is disabled
+          git fetch origin gh-pages || true
+          git checkout gh-pages || git checkout --orphan gh-pages
+          rm -rf *
+          mv ../index.html .
+          touch .nojekyll
 
-      - name: Commit and Push Changes
+      - name: Commit and Push
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add index.html .nojekyll
-          git commit -m "Update index.html with latest README and fix Mermaid rendering" || echo "No changes to commit"
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Deploy updated README to GitHub Pages" || true
           git push origin gh-pages
 
-      - name: Output GitHub Pages URL
-        run: echo "The deployed site should be available at: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
-
-
+      - name: Output Deployment URL
+        run: echo "Site available at: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
