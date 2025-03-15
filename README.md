@@ -1,4 +1,4 @@
-## Decker Family  Survey
+## Decker Family Survey
 
 ## Table of Contents
 - [Executive Summary](#executive-summary)
