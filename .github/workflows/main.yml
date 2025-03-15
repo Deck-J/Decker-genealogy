@@ -45,7 +45,7 @@ jobs:
               <article>' > docs/index.html
           pandoc README.md -f markdown -t html --metadata title="Decker Family Survey" >> docs/index.html
           echo '</article></body></html>' >> docs/index.html
-          touch docs/.nojekyll  # Create the .nojekyll file
+          touch docs/.nojekyll  # Disable Jekyll on GitHub Pages
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v2
