@@ -242,7 +242,6 @@ The family's involvement in significant historical events—from the surrender o
 The detailed genealogical information now available provides a comprehensive understanding of the Decker family's branches, movements, and contributions to American history. This integrated history serves as a valuable resource for understanding not just one family's journey, but the broader patterns of settlement, conflict, and community-building that shaped the American experience.
 
 ## Family Tree Diagram
-
 ```mermaid
 flowchart TD
     %% European Origins
