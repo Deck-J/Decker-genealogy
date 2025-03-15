@@ -26,7 +26,7 @@ jobs:
           pandoc README.md -o index.html \
           --metadata title="Project Documentation" \
           --standalone \
-          -V header-includes='<script src="https://cdn.jsdelivr.net/npm/mermaid@11.0.0/dist/mermaid.min.js"></script>'
+          -V header-includes='<script type="module">import mermaid from \"https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs\"; mermaid.initialize({ startOnLoad: true }); console.log(\"Mermaid initialized\");</script><style>.mermaid-container { overflow: auto; width: 100%; height: 90vh; border: 1px solid #ddd; background: white; } body { font-family: Arial, sans-serif; text-align: center; background-color: #f8f9fa; } h1, h2 { font-size: 24px; }</style>'
           # Debug: Show HTML before modification
           echo "HTML before sed commands:"
           grep "mermaid" index.html || echo "No mermaid code block found"
@@ -36,15 +36,13 @@ jobs:
           # Debug: Show the exact line we're trying to replace
           echo "Before sed - looking for mermaid code block:"
           grep "<pre><code class=\"language-mermaid\"" index.html
-          # Replace <pre><code class="language-mermaid"> with <pre class="mermaid">
-          sed -i 's/<pre><code class="language-mermaid"[^>]*>/<pre class="mermaid">/g' index.html
-          # Replace </code></pre> with </pre>
-          sed -i 's/<\/code><\/pre>/<\/pre>/g' index.html
+          # Replace <pre><code class="language-mermaid"> with <div class="mermaid-container"><div class="mermaid">
+          sed -i 's/<pre><code class="language-mermaid"[^>]*>/<div class="mermaid-container"><div class="mermaid">/g' index.html
+          # Replace </code></pre> with </div></div>
+          sed -i 's/<\/code><\/pre>/<\/div><\/div>/g' index.html
           # Debug: Show the modified line
           echo "After sed - modified mermaid code block:"
-          grep "<pre class=\"mermaid\"" index.html || echo "No mermaid class found after sed"
-          # Append the updated Mermaid initialization script with error handling
-          echo '<script>document.addEventListener("DOMContentLoaded", function() { console.log("Mermaid initializing..."); mermaid.initialize({ startOnLoad: true }); mermaid.run().then(() => console.log("Mermaid rendering complete")).catch(error => console.error("Mermaid rendering failed:", error)); });</script>' >> index.html
+          grep "mermaid-container" index.html || echo "No mermaid container found after sed"
           # Debug: Show the final HTML
           echo "Final HTML:"
           cat index.html
