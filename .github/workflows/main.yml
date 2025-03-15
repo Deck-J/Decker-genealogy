@@ -43,8 +43,8 @@ jobs:
           # Debug: Show the modified line
           echo "After sed - modified mermaid code block:"
           grep "<pre class=\"mermaid\"" index.html || echo "No mermaid class found after sed"
-          # Append the updated Mermaid initialization script with debug logging
-          echo '<script>document.addEventListener("DOMContentLoaded", function() { console.log("Mermaid initializing..."); mermaid.initialize({ startOnLoad: true }); mermaid.run().then(() => console.log("Mermaid rendering complete")); });</script>' >> index.html
+          # Append the updated Mermaid initialization script with error handling
+          echo '<script>document.addEventListener("DOMContentLoaded", function() { console.log("Mermaid initializing..."); mermaid.initialize({ startOnLoad: true }); mermaid.run().then(() => console.log("Mermaid rendering complete")).catch(error => console.error("Mermaid rendering failed:", error)); });</script>' >> index.html
           # Debug: Show the final HTML
           echo "Final HTML:"
           cat index.html
