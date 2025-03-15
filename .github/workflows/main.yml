@@ -27,12 +27,27 @@ jobs:
           --metadata title="Project Documentation" \
           --standalone \
           -V header-includes='<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>'
+          # Debug: Show HTML before modification
+          echo "HTML before sed commands:"
+          grep "mermaid" index.html || echo "No mermaid code block found"
 
       - name: Fix Mermaid class in index.html
         run: |
-          sed -i 's/<pre><code class="language-mermaid">/<pre class="mermaid">/g' index.html
+          # Debug: Show the exact line we're trying to replace
+          echo "Before sed - looking for mermaid code block:"
+          grep "<pre><code class=\"language-mermaid\"" index.html
+          # Replace <pre><code class="language-mermaid"> with <pre class="mermaid">
+          # Use a more flexible pattern to account for whitespace or variations
+          sed -i 's/<pre><code class="language-mermaid"[^>]*>/<pre class="mermaid">/g' index.html
+          # Replace </code></pre> with </pre>
           sed -i 's/<\/code><\/pre>/<\/pre>/g' index.html
+          # Debug: Show the modified line
+          echo "After sed - modified mermaid code block:"
+          grep "<pre class=\"mermaid\"" index.html || echo "No mermaid class found after sed"
+          # Append the Mermaid initialization script
           echo '<script>document.addEventListener("DOMContentLoaded", function() { mermaid.initialize({startOnLoad: true}); });</script>' >> index.html
+          # Debug: Show the final HTML
+          echo "Final HTML:"
           cat index.html
 
       - name: Setup gh-pages branch
