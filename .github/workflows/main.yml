@@ -45,11 +45,12 @@ jobs:
               <article>' > docs/index.html
           pandoc README.md -f markdown -t html --metadata title="Decker Family Survey" >> docs/index.html
           echo '</article></body></html>' >> docs/index.html
+          touch docs/.nojekyll  # Create the .nojekyll file
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v2
         with:
-          path: docs  # Upload docs/ directory (including index.html)
+          path: docs  # Upload docs/ directory (including index.html and .nojekyll)
 
   deploy:
     needs: build
