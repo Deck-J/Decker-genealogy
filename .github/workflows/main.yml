@@ -26,7 +26,7 @@ jobs:
           pandoc README.md -o index.html \
           --metadata title="Project Documentation" \
           --standalone \
-          -V header-includes='<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>'
+          -V header-includes='<script src="https://cdn.jsdelivr.net/npm/mermaid@11.0.0/dist/mermaid.min.js"></script>'
           # Debug: Show HTML before modification
           echo "HTML before sed commands:"
           grep "mermaid" index.html || echo "No mermaid code block found"
@@ -37,15 +37,14 @@ jobs:
           echo "Before sed - looking for mermaid code block:"
           grep "<pre><code class=\"language-mermaid\"" index.html
           # Replace <pre><code class="language-mermaid"> with <pre class="mermaid">
-          # Use a more flexible pattern to account for whitespace or variations
           sed -i 's/<pre><code class="language-mermaid"[^>]*>/<pre class="mermaid">/g' index.html
           # Replace </code></pre> with </pre>
           sed -i 's/<\/code><\/pre>/<\/pre>/g' index.html
           # Debug: Show the modified line
           echo "After sed - modified mermaid code block:"
           grep "<pre class=\"mermaid\"" index.html || echo "No mermaid class found after sed"
-          # Append the Mermaid initialization script
-          echo '<script>document.addEventListener("DOMContentLoaded", function() { mermaid.initialize({startOnLoad: true}); });</script>' >> index.html
+          # Append the updated Mermaid initialization script with debug logging
+          echo '<script>document.addEventListener("DOMContentLoaded", function() { console.log("Mermaid initializing..."); mermaid.initialize({ startOnLoad: true }); mermaid.run().then(() => console.log("Mermaid rendering complete")); });</script>' >> index.html
           # Debug: Show the final HTML
           echo "Final HTML:"
           cat index.html
