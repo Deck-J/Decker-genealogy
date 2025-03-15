@@ -1,4 +1,4 @@
-## Decker Family  Survey
+## Decker Family
 
 ## Family Tree Diagram
 
