@@ -13,7 +13,7 @@
 - [Family Tree Diagram](#family-tree-diagram)
 - [Sources](#sources)
 
-## Executive Summary
+## Background
 
 This report presents a comprehensive analysis of the Decker family history, drawing from multiple primary sources including Charles E. Stickney's 1895 "History of Deckertown," a detailed family tree diagram, and three genealogical records. Together, these sources trace the Decker family's journey from their origins in Holland through their settlement and expansion across America over nearly four centuries.
 
