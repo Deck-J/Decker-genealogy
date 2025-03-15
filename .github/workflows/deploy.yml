@@ -39,18 +39,37 @@ jobs:
               <style>
                   body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 20px; }
                   pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
+                  code.language-mermaid { display: block; background: none; padding: 0; }
               </style>
           </head>
           <body>
               <article>' > docs/index.html
+          
+          # Convert README.md to HTML
           pandoc README.md -f markdown -t html --metadata title="Decker Family Survey" >> docs/index.html
-          echo '</article></body></html>' >> docs/index.html
-          touch docs/.nojekyll  # Prevent Jekyll from interfering
+          
+          echo '</article>
+          <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                  mermaid.initialize({ startOnLoad: true });
+                  document.querySelectorAll("code.language-mermaid").forEach(el => {
+                      let pre = el.parentElement;
+                      let newDiv = document.createElement("div");
+                      newDiv.classList.add("mermaid");
+                      newDiv.textContent = el.textContent;
+                      pre.replaceWith(newDiv);
+                  });
+                  mermaid.init();
+              });
+          </script>
+          </body></html>' >> docs/index.html
+
+          touch docs/.nojekyll  # Disable Jekyll for correct rendering
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v2
         with:
-          path: docs  # Ensure docs/ (including index.html & .nojekyll) is uploaded
+          path: docs  # Upload docs/ directory (including index.html and .nojekyll)
 
   deploy:
     needs: build
