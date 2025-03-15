@@ -28,18 +28,27 @@ jobs:
             --standalone \
             --preserve-tabs \
             --highlight-style=pygments \
-            -V header-includes="<script type='module'>import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs'; mermaid.initialize({ startOnLoad: true });</script>" \
-            -V header-includes="<style>.mermaid-container { overflow: auto; width: 100%; height: 90vh; border: 1px solid #ddd; background: white; } body { font-family: Arial, sans-serif; text-align: center; background-color: #f8f9fa; } h1, h2 { font-size: 24px; }</style>"
+            -V header-includes="
+            <script type='module'>
+              import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+              mermaid.initialize({ startOnLoad: true });
+            </script>" \
+            -V header-includes="
+            <style>
+              .mermaid-container { overflow: auto; width: 100%; height: 90vh; border: 1px solid #ddd; background: white; }
+              body { font-family: Arial, sans-serif; text-align: center; background-color: #f8f9fa; }
+              h1, h2 { font-size: 24px; }
+            </style>"
 
       - name: Debug: Show generated index.html
         run: head -n 100 index.html
 
       - name: Fix Mermaid Code Blocks in index.html
         run: |
-          echo "Before sed - Mermaid-related code blocks:"
-          grep -A 50 "<pre>" index.html | grep -B 5 -A 50 "mermaid\|flowchart" || echo "No mermaid-related code blocks found"
+          echo "Before sed - Checking Mermaid code blocks:"
+          grep -A 50 "<pre>" index.html | grep -B 5 -A 50 "mermaid\|flowchart" || echo "No Mermaid code blocks found"
 
-          # Convert Mermaid code blocks from <pre><code> to <div class="mermaid">
+          # Convert Mermaid blocks to <div class="mermaid">
           sed -i 's|<pre><code class="language-mermaid">|<div class="mermaid">|g' index.html
           sed -i 's|<pre><code class="mermaid">|<div class="mermaid">|g' index.html
           sed -i 's|<pre class="language-mermaid">|<div class="mermaid">|g' index.html
@@ -47,11 +56,19 @@ jobs:
           sed -i 's|</code></pre>|</div>|g' index.html
           sed -i 's|</pre>|</div>|g' index.html
 
-          echo "After sed - Updated Mermaid code blocks:"
-          grep -B 5 -A 50 "<div class=\"mermaid\"" index.html || echo "No mermaid container found"
+          echo "After sed - Checking updated Mermaid blocks:"
+          grep -B 5 -A 50 "<div class=\"mermaid\"" index.html || echo "No Mermaid containers found"
 
-          # Add Mermaid reinitialization script at the bottom
-          echo '<script>document.addEventListener("DOMContentLoaded", function() { setTimeout(() => { if (window.mermaid) { mermaid.init(undefined, document.querySelectorAll(".mermaid")); } }, 1000); });</script>' >> index.html
+          # Add Mermaid reinitialization script
+          echo '<script>
+          document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+              if (window.mermaid) {
+                mermaid.init(undefined, document.querySelectorAll(".mermaid"));
+              }
+            }, 1000);
+          });
+          </script>' >> index.html
 
       - name: Prepare GitHub Pages Deployment
         run: |
