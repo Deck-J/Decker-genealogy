@@ -3,7 +3,7 @@ name: Deploy README to GitHub Pages
 on:
   push:
     branches:
-      - main  # Adjust if your primary branch is different
+      - main  # Change if your primary branch is different
     paths:
       - "README.md"  # Trigger only when README.md is changed
 
@@ -45,12 +45,12 @@ jobs:
               <article>' > docs/index.html
           pandoc README.md -f markdown -t html --metadata title="Decker Family Survey" >> docs/index.html
           echo '</article></body></html>' >> docs/index.html
-          touch docs/.nojekyll  # Disable Jekyll on GitHub Pages
+          touch docs/.nojekyll  # Prevent Jekyll from interfering
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v2
         with:
-          path: docs  # Upload docs/ directory (including index.html and .nojekyll)
+          path: docs  # Ensure docs/ (including index.html & .nojekyll) is uploaded
 
   deploy:
     needs: build
