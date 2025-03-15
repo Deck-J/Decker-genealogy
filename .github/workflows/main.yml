@@ -48,9 +48,6 @@ jobs:
 
       - name: Prepare GitHub Pages Deployment
         run: |
-          # Disable Jekyll (only create .nojekyll if it doesn't already exist)
-          if [ ! -f ".nojekyll" ]; then touch .nojekyll; fi
-
           echo "Current branch before setup: $(git branch --show-current)"
 
           mv index.html /tmp/index.html
@@ -59,7 +56,9 @@ jobs:
           git fetch origin gh-pages && git checkout gh-pages || (git checkout --orphan gh-pages && git rm -rf .)
 
           mv /tmp/index.html .
-          mv .nojekyll .
+
+          # Ensure .nojekyll exists, but do NOT move it if it already exists
+          touch .nojekyll
 
           echo "Current branch after setup: $(git branch --show-current)"
 
