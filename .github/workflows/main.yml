@@ -31,7 +31,6 @@ jobs:
       - name: Setup gh-pages branch
         run: |
           git fetch origin gh-pages || (git checkout --orphan gh-pages && git rm -rf .)
-          git checkout gh-pages
 
       - name: Move new index.html to gh-pages branch
         run: mv index.html .
