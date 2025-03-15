@@ -1,0 +1,61 @@
+name: Deploy README to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Adjust if your primary branch is different
+    paths:
+      - "README.md"  # Trigger only when README.md is changed
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Pandoc
+        run: sudo apt-get install -y pandoc
+
+      - name: Convert README.md to index.html
+        run: |
+          mkdir -p docs
+          echo '<!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Decker Family Survey</title>
+              <script type="module">
+                  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+                  mermaid.initialize({ startOnLoad: true });
+              </script>
+              <style>
+                  body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 20px; }
+                  pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
+              </style>
+          </head>
+          <body>
+              <article>' > docs/index.html
+          pandoc README.md -f markdown -t html --metadata title="Decker Family Survey" >> docs/index.html
+          echo '</article></body></html>' >> docs/index.html
+          touch docs/.nojekyll  # Prevent Jekyll from interfering
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: docs  # Ensure docs/ (including index.html & .nojekyll) is uploaded
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
