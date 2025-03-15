@@ -67,7 +67,7 @@ jobs:
           touch docs/.nojekyll  # Disable Jekyll for correct rendering
 
       - name: Upload artifact for GitHub Pages
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v2  # ✅ Correct action
         with:
           path: docs  # Upload docs/ directory (including index.html and .nojekyll)
 
@@ -77,4 +77,4 @@ jobs:
 
     steps:
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v2  # ✅ Correct action
