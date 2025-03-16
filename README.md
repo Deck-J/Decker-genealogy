@@ -255,7 +255,7 @@ The family's involvement in significant historical events—from the surrender o
 The detailed genealogical information now available provides a comprehensive understanding of the Decker family's branches, movements, and contributions to American history. This integrated history serves as a valuable resource for understanding not just one family's journey, but the broader patterns of settlement, conflict, and community-building that shaped the American experience.
 
 ## Family Tree Diagram
-```Mermaid
+```mermaid
 flowchart TD
     %% European Origins
     JohannesDeDecker["Johannes De Decker (c. 1620)\nHelped negotiate New Amsterdam's surrender (1664)\nSettled on Staten Island (present-day Decker Family Farm of Richmond Hill)\nOccupation: Commissary\nArrived on English ship Black Eagle"] --o JanBroerson["Jan Broerson Decker (c. 1650)\nBorn: Germany\nBuried: Old Dutch Church, Kingston, NY"]
