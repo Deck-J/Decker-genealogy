@@ -3,7 +3,9 @@ name: Deploy GitHub Pages
 on:
   push:
     branches:
-      - main  # Change if your default branch is different
+      - main  # Trigger when pushing to main
+    paths:
+      - "README.md"  # Trigger only if README.md changes
 
 jobs:
   build-and-deploy:
@@ -16,11 +18,11 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'  # Ensure Ruby version is compatible
+          ruby-version: '3.1'  # Ensure compatibility with Jekyll
 
       - name: Install Jekyll
         run: |
-          gem install jekyll
+          gem install jekyll bundler
           [ -f Gemfile ] && bundle install || echo "No Gemfile found, skipping bundle install"
 
       - name: Build Jekyll Site
@@ -41,10 +43,14 @@ jobs:
                 });
                 mermaid.init();
             });
-          </script>" >> _site/index.html
+          </script>" >> _site/_includes/mermaid.html
+
+          echo "{% raw %}{% include mermaid.html %}{% endraw %}" >> _site/_layouts/default.html
 
       - name: Upload GitHub Pages Artifact
-        uses: actions/upload-pages-artifact@v2  # Fixed version
+        uses: actions/upload-pages-artifact@v2  # Correct version for artifact upload
+        with:
+          path: _site
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
