@@ -3,12 +3,12 @@ name: Deploy GitHub Pages
 on:
   push:
     branches:
-      - main  # Change if your default branch is different
+      - main
 
 permissions:
   contents: read
   pages: write
-  id-token: write  # Required for deploy-pages action
+  id-token: write
 
 jobs:
   build-and-deploy:
@@ -52,6 +52,9 @@ jobs:
                 mermaid.init();
             });
           </script>" >> _site/index.html
+
+      - name: Ensure GitHub Pages Artifact Upload Completes
+        run: sleep 10  # Wait for any async processes before upload
 
       - name: Upload GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v3
