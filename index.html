@@ -1,988 +1,339 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Project Documentation</title>
-  <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"; mermaid.initialize({ startOnLoad: true });</script><style>.mermaid-container { overflow: auto; width: 100%; height: 90vh; border: 1px solid #ddd; background: white; } body { font-family: Arial, sans-serif; text-align: center; background-color: #f8f9fa; } h1, h2 { font-size: 24px; }</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decker Family History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        .mermaid-container {
+            width: 100%;
+            border: 1px solid #ddd;
+            background: white;
+            margin: 20px 0;
+            position: relative;
+            min-height: 600px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+    </style>
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">Project Documentation</h1>
-</header>
-<h2 id="decker-family-survey">Decker Family Survey</h2>
-<h2 id="family-tree-diagram">Family Tree Diagram</h2>
-<pre class="mermaid"><code>flowchart TD
-    A[Start] --&gt; B[End]</div>
-<h2 id="table-of-contents">Table of Contents</h2>
-<ul>
-<li><a href="#executive-summary">Executive Summary</a></li>
-<li><a href="#i-european-origins-and-early-american-settlement">I.
-European Origins and Early American Settlement</a></li>
-<li><a href="#ii-the-common-ancestor-and-diverging-branches">II. The
-Common Ancestor and Diverging Branches</a></li>
-<li><a href="#iii-the-founding-and-development-of-deckertown">III. The
-Founding and Development of Deckertown</a></li>
-<li><a href="#iv-the-decker-family-in-american-history">IV. The Decker
-Family in American History</a></li>
-<li><a href="#v-geographic-expansion-of-the-decker-family">V. Geographic
-Expansion of the Decker Family</a></li>
-<li><a href="#vi-family-naming-patterns-and-cultural-practices">VI.
-Family Naming Patterns and Cultural Practices</a></li>
-<li><a href="#vii-notable-decker-family-members">VII. Notable Decker
-Family Members</a></li>
-<li><a href="#viii-conclusion">VIII. Conclusion</a></li>
-<li><a href="#family-tree-diagram">Family Tree Diagram</a></li>
-<li><a href="#sources">Sources</a></li>
-</ul>
-<h2 id="background-of-report">Background of Report</h2>
-<p>This report presents a comprehensive analysis of the Decker family
-history, drawing from multiple primary sources including Charles E.
-Stickney’s 1895 “History of Deckertown,” a detailed family tree diagram,
-and three genealogical records. Together, these sources trace the Decker
-family’s journey from their origins in Holland through their settlement
-and expansion across America over nearly four centuries.</p>
-<p>The Decker family’s American story begins with Johannes De Decker
-(c. 1620), who helped negotiate New Amsterdam’s surrender in 1664, and
-continues through multiple generations that shaped communities across
-New York, New Jersey, Pennsylvania, West Virginia, and Florida. This
-report highlights how the Decker family networks influenced settlement
-patterns, economic development, and community formation in early
-America, with particular focus on the founding and growth of Deckertown
-(now Sussex, New Jersey).</p>
-<p>Through careful analysis of multiple sources, this report identifies
-key family branches, documents significant historical events involving
-family members, traces geographic movements, and establishes connections
-between different generations. The result is a comprehensive
-genealogical and historical account that places the Decker family within
-the broader context of American history.</p>
-<h2 id="i.-european-origins-and-early-american-settlement">I. European
-Origins and Early American Settlement</h2>
-<h3 id="european-roots">European Roots</h3>
-<p>The Decker family’s American story begins in Holland. According to
-genealogical records, the earliest known ancestor was Johannes De Decker
-(c. 1620), who played a significant role in American colonial history by
-helping negotiate New Amsterdam’s surrender in 1664 when the Dutch
-colony was taken over by the British.</p>
-<p>His son, Jan Gerritse(n) Decker, was born around 1640 in Heerden,
-Gilderland, Holland (Netherlands) and emigrated to the American
-colonies. Jan married Grietje Hendrisckse Westercamp on March 23, 1664,
-in the Kingston (Wiltwyck) Reform Dutch Church in Ulster County, New
-York. Grietje was born between 1642-1644 in New Amsterdam (later New
-York).</p>
-<p>Jan Gerritse(n) Decker established himself in the Kingston area,
-appearing on the muster roll of the garrison at Wiltwyck (Kingston) in
-1661. In 1663, he and his family faced hardship when they were taken
-prisoner along with their three children. He appears in Kingston Church
-records in 1688, 1697, and 1701, attended a trustees meeting in
-Rochester in 1703, and was listed on the 1709 tax list of Ulster County.
-He died before February 23, 1709, in Ulster County, NY.</p>
-<h3 id="second-generation-in-america">Second Generation in America</h3>
-<p>The second generation of Deckers in America included Hendrick Jansen
-Decker, born around 1667 in Accord (Kingston), Rochester Township,
-Ulster County, NY. Hendrick married twice: first to Jannetjen Kortright
-and later to Antje (Hannah) Geertje Quick on December 18, 1696, in the
-Kingston Reformed Dutch Church. Antje was born between 1668-1674 in
-Kingston and died around 1717 in Port Jervis, Deerpark, Orange County,
-NY. Their son Thomas was baptized on September 3, 1704.</p>
-<p>Another important second-generation member was Jan Gerritse Decker
-(b. July 28, 1688, Kingston, Ulster County, NY; d. Romney, Hampshire,
-WV), whose parents were Gerrett Janse Decker (b. February 14, 1664) and
-Margariet Grietjen Decker (b. about August 31, 1664). Jan married
-Barbara Janes DeWitt (b. April 17, 1692). His migration from New York to
-West Virginia demonstrates the family’s early westward movement.</p>
-<h2 id="ii.-the-common-ancestor-and-diverging-branches">II. The Common
-Ancestor and Diverging Branches</h2>
-<p>The family tree identifies Johannis Decker (c. 1685) as a common
-ancestor for the various branches of the Decker family in America.
-Johannis was buried in Minisink, Orange County, NY. From this common
-ancestor, three main branches of the family emerged:</p>
-<h3 id="isaacs-line-moving-to-pennsylvania">Isaac’s Line (Moving to
-Pennsylvania)</h3>
-<p>One branch of the family, beginning with Major John Decker
-(1712-1793), eventually migrated to Pennsylvania. This lineage continued
-through Isaac Decker (1743-~1840), who married Dorcas Chamberlain
-(~1750-). Isaac appears to be a pivotal figure connecting the New Jersey
-and Pennsylvania branches. His long life (nearly 100 years) spans from
-the colonial era through the early republic.</p>
-<p>Isaac and Dorcas had several children, including: - Christopher
-Decker (~1780-, b. in Cumberland Co., PA) - Daniel Decker (~1787-1840,
-b. in Sussex Co., NJ, d. in Fairfield Twp, Westmoreland Co, PA)</p>
-<p>The line continued through Jacob Decker (~1784-1835), who married
-Elizabeth Irwin (~1785-). Jacob may have been Isaac’s son, representing
-the transition of the family from New Jersey to Pennsylvania. Jacob and
-Elizabeth had a son named Daniel Decker (1808-1887).</p>
-<p>Daniel Decker (1808-1887) married Sara Martin (~1813-1885) and had
-several children, including: - Charles Martin Decker (1835-1871) - Job
-Decker (1837-1899) - Martin Decker (1841-1887) - James W. Decker
-(1843-1865) - William A. Decker (b. ~1843) - John Decker (1844-&lt;1900)
-- Chamberlin Decker (b. 1846)</p>
-<p>Daniel lived and died in St. Clair Township, Westmoreland County, PA,
-firmly establishing the Decker family in western Pennsylvania.</p>
-<p>Job Decker (1837-1899) continued the line, fathering Samuel St. Clair
-Decker (1865-1930), who married Anna Lide Sharpe (1866-1946). Samuel and
-Anna had a son named Clifford J. Decker (1896-), who lived in
-Pittsburgh, PA and married Anna Carbaugh (~1891-).</p>
-<p>Clifford J. Decker and Anna had a son named Clifford Decker (1915-),
-who married Marjorie (~1919-) and had three sons (b. ~1950). Clifford
-died in Gainesville, FL, representing the family’s geographic expansion
-to Florida in the mid-20th century.</p>
-<h3 id="peters-line-remaining-in-new-jersey">Peter’s Line (Remaining in
-New Jersey)</h3>
-<p>The second branch, which is more directly connected to the founding
-and development of Deckertown, remained in New Jersey. This lineage
-included: - Peter Decker (1711-?), buried in Sussex County, NJ (likely
-Clove Cemetery) - Peter Decker (Landowner), buried in Sussex County, NJ
-(likely Old Clove Cemetery) - Josiah Decker (1740-1814), buried in Clove
-Cemetery, Sussex County, NJ - Bowdewine Decker (1763-1853), buried in
-Old Clove Church Cemetery, Sussex County, NJ - Samuel Decker (1790-?),
-possibly buried in Clove Cemetery, NJ - William B. Decker (1825-1861),
-buried in Clove Cemetery, Sussex County, NJ - Chester Edward Decker
-Sr. (1926-2023), buried in Clove Cemetery, Sussex County, NJ</p>
-<h3 id="tobias-decker-line-west-virginia-frontier">Tobias Decker Line
-(West Virginia Frontier)</h3>
-<p>Another significant branch was established by Tobias Decker, who died
-on October 16, 1759, during an Indian attack. Tobias had brothers named
-Garrett and John Decker. This family settled in Monongalia County, WV in
-1758, representing the frontier experience of the Decker family.</p>
-<p>Tobias and his brothers were among 11 riflemen with Braddock’s Army
-who lost their way after the Battle of Monongahela during the
-French-Indian War (1754-55). After the battle, they settled near what is
-now Morgantown, WV. Tragically, Tobias, his wife, and two children were
-killed in a 1759 attack by Delaware Indians on the Decker’s Creek
-settlement.</p>
-<h2 id="iii.-the-founding-and-development-of-deckertown">III. The
-Founding and Development of Deckertown</h2>
-<h3 id="peter-decker-the-founder">Peter Decker: The Founder</h3>
-<p>According to Stickney’s “History of Deckertown,” Peter Decker was the
-founder of what would become Deckertown. He and his wife Magdalena (née
-Isterbout) were described as “sturdy American born Hollanders” whose
-original German names were Petrus and Lecentje Decker. Peter cleared the
-virgin soil and established the first homestead in what would later
-become the town center.</p>
-<p>The settlement was initially called “Deckerville” after the founding
-family and began as a small collection of log houses in the wilderness.
-Peter’s sons who settled around him in Deckertown were Samuel, Pope, and
-Hick, and they had daughters named Hannah, Maria, Catherina, Annetje,
-and Rebecca.</p>
-<p>By 1895, when Stickney wrote his history, approximately eight-tenths
-of the inhabitants of Deckertown were related by blood or marriage to
-Peter and Magdalena Decker, demonstrating the profound influence this
-family had on the community’s development.</p>
-<h3 id="early-settlement-context">Early Settlement Context</h3>
-<p>The early development of Deckertown was influenced by broader
-colonial patterns. The Minisink patent of 1702, issued by Queen Anne,
-conveyed lands from the lower end of Big Minisink Island northeast in
-New Jersey to certain parties, setting the stage for settlement disputes
-that would continue for decades.</p>
-<p>The settlement’s growth was also shaped by its relationship with
-indigenous peoples, particularly the Munsey Indians (also called
-Munsies), whose tribal emblem or totem was a wolf that served as their
-signature and was recognized by other Indian tribes throughout the
-region.</p>
-<h3 id="infrastructure-and-economic-development">Infrastructure and
-Economic Development</h3>
-<p>The physical development of Deckertown is chronicled in Stickney’s
-history. Andrew Willson built the first frame house in the neighborhood
-around the end of the Revolutionary War, followed by Peter Decker
-building his own frame house around the same time. Early roads were
-developed, including one that was later straightened in 1817 when the
-Hoboken and Milford turnpike was constructed.</p>
-<p>Economic activities in early Deckertown included the manufacture of
-potash, with Robert Morris Jr. specifically noted as being involved in
-this industry in 1772. The presence of a cider house and distillery,
-mentioned in a foreclosure action, suggests diversification of economic
-activities as the settlement grew.</p>
-<h3 id="land-ownership-and-property-development">Land Ownership and
-Property Development</h3>
-<p>The division of Peter Decker’s original land holdings into the many
-small parcels that later comprised Deckertown is described by Stickney
-as a process that cannot be followed in detail, but he notes that
-various speculators suffered losses in their dealings. The text suggests
-that Peter Decker never received the full reward he deserved for his
-preemption rights.</p>
-<p>The family tree diagram notes several important land transactions
-involving the Decker family: - Peter Decker (Landowner) owned land
-surveyed for Richard Penn - Peter Decker sold part of Richard Penn land
-to Joseph Sharp (1813) - Samuel Decker (1790) sold land to Bowdewine
-Decker (1790) - Bowdewine Decker purchased land from Samuel Decker
-(1790)</p>
-<p>A significant foreclosure action resulted in the Sheriff selling the
-cider house, distillery lots, and several other parcels of land in
-Deckertown. Bowdewine Decker was the purchaser, as recorded in a deed
-dated April 9, 1827. Seven or eight years later, Samuel Whittaker,
-William Rankin, and John Loomis bought large portions of the real
-estate, followed by Jacob E. Hornbeck, reflecting the changing patterns
-of land ownership as the town developed.</p>
-<h2 id="iv.-the-decker-family-in-american-history">IV. The Decker Family
-in American History</h2>
-<h3 id="revolutionary-war-service">Revolutionary War Service</h3>
-<p>The Decker family played a role in the American Revolution, with
-several family members serving in the Continental Army. The genealogical
-records mention several Decker family members who served in the
-Revolutionary War, including Abraham Decker, Benjamin Decker, Conrad
-Decker, George Decker, Isaac Decker, Jacob Decker, Jacob C. Decker, John
-Decker, and Lawrence L. Decker.</p>
-<p>A letter from Revolutionary War veteran and pensioner George/Joris
-Decker describes his service, including being marched to the Delaware
-River on the frontiers in New York, then to North River to Stony Point,
-and later being drafted for a 9-month tour before the Battle of Long
-Island.</p>
-<h3 id="french-indian-war-and-frontier-conflicts">French-Indian War and
-Frontier Conflicts</h3>
-<p>The Decker family was also involved in the French-Indian War
-(1754-55). Tobias and Garrett Decker were among 11 riflemen with
-Braddock’s Army who, after the Battle of Monongahela, settled near what
-is now Morgantown, WV.</p>
-<p>The frontier experience of the Decker family is dramatically
-illustrated by the 1759 attack on the Decker’s Creek settlement by
-Delaware Indians, which resulted in the deaths of Tobias Decker, his
-wife, and two children, along with other settlers. This tragic event
-highlights the dangers faced by frontier settlers during this
-period.</p>
-<p>From historical accounts: “On the afternoon of Oct 16, 1759 the
-settlement was attacked by about 30 Delaware Indians who murdered 8
-persons, killed the livestock, burned the cabins and destroyed the
-crops. They captured Abel Westfall, took him to Fort Duquesne then to an
-Indian town in Ohio. 39 men &amp; women were away from the settlement at
-the time. Those killed were Tobias Decker, his wife and two children;
-William Zern and wife; Abel Westfall’s wife and son.”</p>
-<h3 id="boundary-disputes">Boundary Disputes</h3>
-<p>Boundary disputes between New York and New Jersey significantly
-affected the region’s development. When Sussex County was organized in
-1853 after being cut from Morris County, disputes between New York and
-New Jersey claimants to lands along the boundary line were at their
-height. New York State had been exercising authority and collecting
-taxes over lands that would later be included in New Jersey, while New
-Jersey Proprietors claimed that the boundary line should run from the
-Hudson River in a straight line to the northernmost branch of the
-Delaware River, which would have reached Cochecton. This would have
-placed Port Jervis and surrounding lands within New Jersey, leading to
-disputes, writs of ejectment, and “lively times along the border.”</p>
-<h2 id="v.-geographic-expansion-of-the-decker-family">V. Geographic
-Expansion of the Decker Family</h2>
-<p>The Decker family’s geographic movement across America reflects
-broader patterns of American westward expansion:</p>
-<h3 id="new-york-to-new-jerseywest-virginia">New York to New Jersey/West
-Virginia</h3>
-<ul>
-<li>Early Deckers like Jan Gerritse Decker were born in New York
-(Kingston, Ulster County)</li>
-<li>Some descendants moved to New Jersey (Sussex County)</li>
-<li>Others like Jan himself and Tobias Decker moved to what is now West
-Virginia</li>
-</ul>
-<h3 id="new-jersey-to-pennsylvania">New Jersey to Pennsylvania</h3>
-<ul>
-<li>Isaac Decker’s son Daniel was born in Sussex County, NJ but died in
-Westmoreland County, PA</li>
-<li>This represents a significant westward migration</li>
-</ul>
-<h3 id="settlement-in-western-pennsylvania">Settlement in Western
-Pennsylvania</h3>
-<ul>
-<li>Multiple generations lived and died in Westmoreland County, PA</li>
-<li>Specific locations include Fairfield Township and St. Clair
-Township</li>
-<li>The family established deep roots in this region</li>
-</ul>
-<h3 id="expansion-to-florida">Expansion to Florida</h3>
-<ul>
-<li>By the mid-20th century, at least one branch (Clifford Decker) had
-moved to Gainesville, FL</li>
-<li>Represents the continued geographic mobility of the family</li>
-</ul>
-<h2 id="vi.-family-naming-patterns-and-cultural-practices">VI. Family
-Naming Patterns and Cultural Practices</h2>
-<p>The Decker family exhibits several naming patterns across
-generations:</p>
-<h3 id="recurring-first-names">Recurring First Names</h3>
-<ul>
-<li>Isaac</li>
-<li>Daniel</li>
-<li>John</li>
-<li>Clifford</li>
-<li>Jacob</li>
-<li>Peter</li>
-</ul>
-<h3 id="generational-naming">Generational Naming</h3>
-<ul>
-<li>Clifford J. Decker named his son Clifford</li>
-<li>This pattern of naming sons after fathers appears in multiple
-instances</li>
-</ul>
-<h3 id="cemetery-patterns">Cemetery Patterns</h3>
-<ul>
-<li>Multiple generations of the New Jersey branch are buried in Clove
-Cemetery</li>
-<li>The Pennsylvania branch has multiple family members buried in
-St. Clair Township and Laurel Hill Furnace Cemetery</li>
-<li>These burial patterns reflect the family’s strong regional ties</li>
-</ul>
-<h2 id="vii.-notable-decker-family-members">VII. Notable Decker Family
-Members</h2>
-<h3 id="johannes-de-decker-c.-1620">Johannes De Decker (c. 1620)</h3>
-<ul>
-<li>Helped negotiate New Amsterdam’s surrender in 1664</li>
-<li>Earliest known ancestor of the American Decker family</li>
-</ul>
-<h3 id="jan-gerritsen-decker-c.-1640-1709">Jan Gerritse(n) Decker
-(c. 1640-1709)</h3>
-<ul>
-<li>Born in Heerden, Gilderland, Holland</li>
-<li>Appeared on the muster roll of the garrison at Wiltwyck (Kingston)
-in 1661</li>
-<li>Taken prisoner with his family in 1663</li>
-<li>Married Grietje Hendrisckse Westercamp on March 23, 1664</li>
-</ul>
-<h3 id="peter-decker-founder-of-deckertown">Peter Decker (Founder of
-Deckertown)</h3>
-<ul>
-<li>Described as a “sturdy American born Hollander”</li>
-<li>Original German name was Petrus Decker</li>
-<li>Cleared virgin soil and established the first homestead in what
-would become Deckertown</li>
-<li>Married Magdalena (née Isterbout)</li>
-<li>Sons included Samuel, Pope, and Hick</li>
-</ul>
-<h3 id="tobias-decker-d.-1759">Tobias Decker (d. 1759)</h3>
-<ul>
-<li>Settled in Monongalia Co., WV in April 1758</li>
-<li>Veteran of Braddock’s Expedition during the French-Indian War</li>
-<li>Killed along with his wife and two children in an Indian attack on
-October 16, 1759</li>
-</ul>
-<h3 id="isaac-decker-1743-1840">Isaac Decker (1743-~1840)</h3>
-<ul>
-<li>Lived nearly 100 years, spanning from colonial era through early
-republic</li>
-<li>Pivotal figure connecting New Jersey and Pennsylvania branches</li>
-<li>Married Dorcas Chamberlain</li>
-<li>Father of Christopher Decker and Daniel Decker</li>
-</ul>
-<h3 id="daniel-decker-1808-1887">Daniel Decker (1808-1887)</h3>
-<ul>
-<li>Established the family firmly in western Pennsylvania</li>
-<li>Lived and died in St. Clair Township, Westmoreland County, PA</li>
-<li>Married Sara Martin</li>
-<li>Father of Job Decker and six other children</li>
-</ul>
-<h3 id="samuel-st.-clair-decker-1865-1930">Samuel St. Clair Decker
-(1865-1930)</h3>
-<ul>
-<li>Married Anna Lide Sharpe (1866-1946)</li>
-<li>Father of Clifford J. Decker</li>
-<li>Buried in Laurel Hill Furnace Cemetery, PA</li>
-</ul>
-<h3 id="clifford-decker-1915-">Clifford Decker (1915-)</h3>
-<ul>
-<li>Represents the family’s geographic expansion to Florida</li>
-<li>Son of Clifford J. Decker and Anna Carbaugh</li>
-<li>Died in Gainesville, FL</li>
-</ul>
-<h2 id="viii.-conclusion">VIII. Conclusion</h2>
-<p>The comprehensive analysis of the Decker family history reveals a
-family deeply intertwined with the development of early America. From
-their origins in Holland to their settlement and expansion across New
-York, New Jersey, Pennsylvania, West Virginia, and beyond, the Deckers
-exemplify the American immigrant experience and the nation’s westward
-expansion.</p>
-<p>The family’s involvement in significant historical events—from the
-surrender of New Amsterdam to the French-Indian War, the Revolutionary
-War, and frontier conflicts—places them at the center of America’s
-formative experiences. Their founding and development of Deckertown
-demonstrates how family networks influenced community formation and
-economic development in early America.</p>
-<p>The detailed genealogical information now available provides a
-comprehensive understanding of the Decker family’s branches, movements,
-and contributions to American history. This integrated history serves as
-a valuable resource for understanding not just one family’s journey, but
-the broader patterns of settlement, conflict, and community-building
-that shaped the American experience.</p>
-<h2 id="family-tree-diagram-1">Family Tree Diagram</h2>
-<pre class="mermaid"><code>flowchart TD
-    %% European Origins
-    JohannesDeDecker[&quot;Johannes De Decker (c. 1620)\nHelped negotiate New Amsterdam&#39;s surrender (1664)&quot;] --&gt; JanBroerson[&quot;Jan Broerson Decker (c. 1650)&quot;]
-    
-    %% Early American Generations
-    JanGerritse[&quot;Jan Gerritse Decker (c. 1640 - 1709)\nBorn in Holland, settled in Kingston, NY&quot;] --&gt; HendrickJansen[&quot;Hendrick Jansen Decker (c. 1667)\nMarried Antje Geertje Quick&quot;]
-    
-    GerrettJanse[&quot;Gerrett Janse Decker (1664)&quot;] -- &quot;Parents&quot; --&gt; JanGerritse2[&quot;Jan Gerritse Decker (1688 - ?)\nBorn Kingston, NY, died Romney, WV&quot;]
-    MargarietGrietjen[&quot;Margariet Grietjen Decker (c. 1664)&quot;] -- &quot;Parents&quot; --&gt; JanGerritse2
-    
-    %% Common Ancestor
-    JanBroerson --&gt; Johannis[&quot;Johannis Decker (c. 1685)\nCommon Ancestor\nBuried in Minisink, Orange Co., NY&quot;]
-    
-    %% Three Main Branches
-    Johannis --&gt; MajorJohn[&quot;Major John Decker (1712 - 1793)\nBuried in Minisink, Orange Co., NY&quot;]
-    Johannis --&gt; PeterNJ[&quot;Peter Decker (1711 - ?)\nBuried in Sussex Co., NJ&quot;]
-    Johannis --&gt; TobiasLine[&quot;Tobias Decker (? - 1759)\nKilled in Indian attack&quot;]
-    
-    %% Isaac&#39;s Line (Pennsylvania Branch)
-    MajorJohn --&gt; Isaac[&quot;Isaac Decker (1743 - ~1840)&quot;]
-    Isaac -- &quot;Spouse&quot; --&gt; Dorcas[&quot;Dorcas Chamberlain (~1750)&quot;]
-    
-    Isaac --&gt; Christopher[&quot;Christopher Decker (~1780)\nBorn in Cumberland Co., PA&quot;]
-    Isaac --&gt; Daniel1787[&quot;Daniel Decker (~1787 - 1840)\nBorn in Sussex Co., NJ\nDied in Westmoreland Co., PA&quot;]
-    
-    %% Jacob&#39;s Line
-    Isaac --&gt; Jacob[&quot;Jacob Decker (~1784 - 1835)&quot;]
-    Jacob -- &quot;Spouse&quot; --&gt; ElizabethIrwin[&quot;Elizabeth Irwin (~1785)&quot;]
-    
-    Jacob --&gt; Daniel1808[&quot;Daniel Decker (1808 - 1887)\nDied in St. Clair Twp, Westmoreland Co., PA&quot;]
-    Daniel1808 -- &quot;Spouse&quot; --&gt; SaraMartin[&quot;Sara Martin (~1813 - 1885)&quot;]
-    
-    Daniel1808 --&gt; CharlesMartin[&quot;Charles Martin Decker (1835 - 1871)&quot;]
-    Daniel1808 --&gt; Job[&quot;Job Decker (1837 - 1899)&quot;]
-    Daniel1808 --&gt; Martin[&quot;Martin Decker (1841 - 1887)&quot;]
-    Daniel1808 --&gt; JamesW[&quot;James W. Decker (1843 - 1865)&quot;]
-    Daniel1808 --&gt; WilliamA[&quot;William A. Decker (~1843)&quot;]
-    Daniel1808 --&gt; John1844[&quot;John Decker (1844 - &lt;1900)&quot;]
-    Daniel1808 --&gt; Chamberlin[&quot;Chamberlin Decker (1846)&quot;]
-    
-    Job --&gt; SamuelStClair[&quot;Samuel St. Clair Decker (1865 - 1930)&quot;]
-    SamuelStClair -- &quot;Spouse&quot; --&gt; AnnaLide[&quot;Anna Lide Sharpe (1866 - 1946)&quot;]
-    
-    SamuelStClair --&gt; CliffordJ[&quot;Clifford J. Decker (1896)\nLived in Pittsburgh&quot;]
-    CliffordJ -- &quot;Spouse&quot; --&gt; AnnaCarbaugh[&quot;Anna Carbaugh (~1891)&quot;]
-    
-    CliffordJ --&gt; Clifford[&quot;Clifford Decker (1915)\nDied in Gainesville, FL&quot;]
-    Clifford -- &quot;Spouse&quot; --&gt; Marjorie[&quot;Marjorie (~1919)&quot;]
-    
-    Clifford --&gt; Son1[&quot;One Son (~1950)&quot;]
-    Clifford --&gt; Son2[&quot;Two Son (~1950)&quot;]
-    
-    %% Peter&#39;s Line (New Jersey Branch)
-    PeterNJ --&gt; PeterLandowner[&quot;Peter Decker (Landowner)\nFounder of Deckertown&quot;]
-    PeterLandowner -- &quot;Spouse&quot; --&gt; Magdalena[&quot;Magdalena Isterbout&quot;]
-    
-    PeterLandowner --&gt; Samuel[&quot;Samuel Decker&quot;]
-    PeterLandowner --&gt; Pope[&quot;Pope Decker&quot;]
-    PeterLandowner --&gt; Hick[&quot;Hick Decker&quot;]
-    PeterLandowner --&gt; Hannah[&quot;Hannah Decker&quot;]
-    PeterLandowner --&gt; Maria[&quot;Maria Decker&quot;]
-    PeterLandowner --&gt; Catherina[&quot;Catherina Decker&quot;]
-    PeterLandowner --&gt; Annetje[&quot;Annetje Decker&quot;]
-    PeterLandowner --&gt; Rebecca[&quot;Rebecca Decker&quot;]
-    
-    PeterNJ --&gt; Josiah[&quot;Josiah Decker (1740 - 1814)\nBuried in Clove Cemetery, Sussex Co., NJ&quot;]
-    Josiah --&gt; Bowdewine[&quot;Bowdewine Decker (1763 - 1853)\nBuried in Old Clove Church Cemetery&quot;]
-    Bowdewine --&gt; Samuel1790[&quot;Samuel Decker (1790 - ?)\nPossibly buried in Clove Cemetery, NJ&quot;]
-    Samuel1790 --&gt; WilliamB[&quot;William B. Decker (1825 - 1861)\nBuried in Clove Cemetery, Sussex Co., NJ&quot;]
-    
-    %% Tobias Line (West Virginia Branch)
-    TobiasLine -- &quot;Brothers&quot; --&gt; GarrettDecker[&quot;Garrett Decker&quot;]
-    TobiasLine -- &quot;Brothers&quot; --&gt; JohnDecker[&quot;John Decker&quot;]
-    
-    %% Style nodes with more readable colors
-    classDef commonAncestor fill:#e6f7ff,stroke:#0066cc,stroke-width:2px,color:#003366
-    classDef founder fill:#e6ffe6,stroke:#006600,stroke-width:2px,color:#003300
-    classDef mainBranch fill:#fff2e6,stroke:#cc6600,stroke-width:2px,color:#663300
-    classDef pennsylvaniaBranch fill:#f2e6ff,stroke:#6600cc,stroke-width:1px,color:#330066
-    classDef newJerseyBranch fill:#ffe6e6,stroke:#cc0066,stroke-width:1px,color:#660033
-    classDef westVirginiaBranch fill:#e6ffff,stroke:#00cccc,stroke-width:1px,color:#006666
-    classDef default fill:#f9f9f9,stroke:#666666,stroke-width:1px,color:#333333
-    
-    class Johannis commonAncestor
-    class PeterLandowner founder
-    class MajorJohn,PeterNJ,TobiasLine mainBranch
-    class Isaac,Jacob,Daniel1808,Job,SamuelStClair,CliffordJ,Clifford pennsylvaniaBranch
-    class Josiah,Bowdewine,Samuel1790,WilliamB newJerseyBranch
-    class GarrettDecker,JohnDecker westVirginiaBranch</div>
-<h2 id="sources">Sources</h2>
-<ol type="1">
-<li><p>Stickney, Charles E. “History of Deckertown; which includes a
-history of the Crigar, Titsworth, and Decker families to some extent.”
-Deckertown, N.J., 1895.</p></li>
-<li><p>“Decker-Family Book” (genealogical record), 2025.</p></li>
-<li><p>Decker Family Tree Diagram (provided by user), 2025.</p></li>
-<li><p>“rmominee-fortunecity-ws-wga4-html-i303.pdf” (genealogical
-record), 2025.</p></li>
-<li><p>“quickening-zapto-org-gramps-ppl-0-3-abfffc499be08b83130-html.pdf”
-(genealogical record of Jan Gerritse Decker), 2025.</p></li>
-<li><p>“quickening-zapto-org-gramps-ppl-5-3-ba8a150a15067714f35-html.pdf”
-(genealogical record of Tobias Decker), 2025.</p></li>
-</ol>
-<h2 id="find-a-grave-confirmed-burials"><strong>Find a Grave Confirmed
-Burials</strong></h2>
-<p>Below are <strong>confirmed burials</strong> from Find a Grave for
-individuals appearing in the genealogy chart:</p>
-<ul>
-<li><strong><a
-href="https://www.findagrave.com/memorial/57753620/daniel-decker">Daniel
-Decker (1808-1887)</a></strong>
-<ul>
-<li><strong>Burial</strong>: West Fairfield Cemetery, Fairfield
-Township, Westmoreland County, Pennsylvania, USA</li>
-</ul></li>
-<li><strong><a
-href="https://www.findagrave.com/memorial/33333214/isaac-decker">Isaac
-Decker (1794-1856)</a></strong>
-<ul>
-<li><strong>Burial</strong>: Laurel Hill Furnace Cemetery, Saint Clair
-Township, Westmoreland County, Pennsylvania, USA</li>
-</ul></li>
-<li><strong><a
-href="https://www.findagrave.com/memorial/86567652/isabella-decker">Isabella
-Davis Decker (1844-1920)</a></strong>
-<ul>
-<li><strong>Burial</strong>: Laurel Hill Furnace Cemetery, Saint Clair
-Township, Westmoreland County, Pennsylvania, USA</li>
-</ul></li>
-<li><strong><a
-href="https://www.findagrave.com/memorial/125481647/samuel-st._clair-decker">Samuel
-St. Clair Decker (1865-1930)</a></strong>
-<ul>
-<li><strong>Burial</strong>: Laurel Hill Furnace Cemetery, Saint Clair
-Township, Westmoreland County, Pennsylvania, USA</li>
-</ul></li>
-<li><strong><a
-href="https://www.findagrave.com/memorial/125481679/anna-lide-decker">Anna
-Lide Sharp Decker (1866-1946)</a></strong>
-<ul>
-<li><strong>Burial</strong>: Laurel Hill Furnace Cemetery, Saint Clair
-Township, Westmoreland County, Pennsylvania, USA</li>
-</ul></li>
-<li><strong><a
-href="https://www.findagrave.com/memorial/85048797/harvey-reed-decker">Harvey
-Reed Decker (1890-1922)</a></strong>
-<ul>
-<li><strong>Burial</strong>: Laurel Hill Furnace Cemetery, Saint Clair
-Township, Westmoreland County, Pennsylvania, USA</li>
-</ul></li>
-<li><strong><a
-href="https://www.findagrave.com/memorial/125484972/frank-vincent-decker">Frank
-Vincent Decker (1909-1941)</a></strong>
-<ul>
-<li><strong>Burial</strong>: Laurel Hill Furnace Cemetery, Saint Clair
-Township, Westmoreland County, Pennsylvania, USA</li>
-</ul></li>
-<li>**[Logan Decker-Decker Historian?
-https://www.findagrave.com/memorial/81615894/logan-h.-decker</li>
-</ul>
-<h1 id="decker-family-grave-locations---a-work-in-progress">Decker
-Family Grave locations - A work in progress</h1>
-<h2 id="laurel-hill-furnace-cemetery-westmoreland-county-pa">Laurel Hill
-Furnace Cemetery (Westmoreland County, PA)</h2>
-<h3 id="john-decker-hull-1834-1866">John Decker Hull (1834-1866)</h3>
-<ul>
-<li><strong>Parents</strong>:
-<ul>
-<li>Tobias Sechler Hull Sr (1803-1887)</li>
-<li>Sarah Decker Hull (1815-1844)</li>
-</ul></li>
-<li><strong>Spouse</strong>: Sarah Jane Hair Hull (1839-1860)</li>
-<li><strong>Siblings</strong>: Tobias Seckler Hull Jr (1825-1892)</li>
-<li><strong>Children</strong>: George Hull (1860-1860)</li>
-</ul>
-<h3 id="samuel-st.-clair-decker-1865-1930-1">Samuel St. Clair Decker
-(1865-1930)</h3>
-<ul>
-<li><strong>Occupation</strong>: Wood chopper (per 1900 census)</li>
-<li><strong>Spouse</strong>: Annie L. (b. Feb 1868)</li>
-<li><strong>Children</strong>:
-<ul>
-<li>May M. (b. May 1887)</li>
-<li>Reed (b. Feb 1890)</li>
-<li>Zora (b. Dec 1891)</li>
-<li>Jane (b. Sep 1893)</li>
-<li>Clifford (b. Nov 1895)</li>
-<li>Albert (b. Oct 1897)</li>
-<li>Samuel S. (b. Feb 1900)</li>
-</ul></li>
-<li><strong>Census Records</strong>:
-<ul>
-<li>1900: Westmoreland Co. St. Clair Twp, dwelling 48, family 50</li>
-<li>1910: Westmoreland Co. St. Clair Twp, Laurel Hill Road, dwelling
-106, family 117</li>
-</ul></li>
-<li><strong>Additional Photo</strong></li>
-<li>Death Certificate
-https://www.findagrave.com/memorial/125481647/samuel-st._clair-decker/photo</li>
-</ul>
-<h2 id="clove-cemetery-sussex-county-nj">Clove Cemetery (Sussex County,
-NJ)</h2>
-<h3 id="william-b.-decker-1825-1861">William B. Decker (1825-1861)</h3>
-<ul>
-<li><strong>Spouse</strong>: Maria A. Decker (1829-1891)</li>
-<li><strong>Children</strong>:
-<ul>
-<li>William R. Decker (1853-1936)</li>
-<li>John B. Decker Jr (1861-1861)</li>
-</ul></li>
-</ul>
-<h3 id="josiah-decker-1740-1814">Josiah Decker (1740-1814)</h3>
-<ul>
-<li><strong>Family relationships not listed</strong></li>
-</ul>
-<h3 id="sarah-decker-decker-1806-1851">Sarah Decker Decker
-(1806-1851)</h3>
-<ul>
-<li><strong>Family relationships not listed</strong></li>
-</ul>
-<h3 id="william-r.-decker-1853-1936">William R. Decker (1853-1936)</h3>
-<ul>
-<li><strong>Parents</strong>: William B. Decker (1825-1861) and Maria A.
-Decker (1829-1891)</li>
-</ul>
-<h3 id="charity-m.-kilpatrick-decker-d.-1868">Charity M. Kilpatrick
-Decker (d. 1868)</h3>
-<ul>
-<li><strong>Family relationships not listed</strong></li>
-</ul>
-<h3 id="mary-louesa-dewitt-decker-1836-1912">Mary Louesa DeWitt Decker
-(1836-1912)</h3>
-<ul>
-<li><strong>Family relationships not listed</strong></li>
-</ul>
-<h2 id="old-clove-church-cemetery-wantage-nj">Old Clove Church Cemetery
-(Wantage, NJ)</h2>
-<h3 id="unknown-decker">Unknown Decker</h3>
-<ul>
-<li><strong>Family relationships not listed</strong></li>
-</ul>
-<h3 id="william-decker-1776-1851">William Decker (1776-1851)</h3>
-<ul>
-<li><strong>Family relationships not listed</strong></li>
-</ul>
-<h2 id="notes">Notes</h2>
-<ul>
-<li>This document captures the family relationships as listed on the
-Find A Grave memorial pages</li>
-<li>Some memorial pages do not list family relationships</li>
-<li>The Decker name appears in multiple family lines, suggesting
-intermarriage between Decker families</li>
-<li>Sarah Decker Hull is a connection point between the Hull and Decker
-families</li>
-</ul>
-<h1 id="updated-decker-family-relationships">Updated Decker Family
-Relationships</h1>
-<h2 id="laurel-hill-furnace-cemetery-westmoreland-county-pa-1">Laurel
-Hill Furnace Cemetery (Westmoreland County, PA)</h2>
-<h3 id="john-decker-hull-1834-1866-1">John Decker Hull (1834-1866)</h3>
-<ul>
-<li><strong>Parents</strong>:
-<ul>
-<li>Tobias Sechler Hull Sr (1803-1887)</li>
-<li>Sarah Decker Hull (1815-1844)</li>
-</ul></li>
-<li><strong>Spouse</strong>: Sarah Jane Hair Hull (1839-1860)</li>
-<li><strong>Siblings</strong>: Tobias Seckler Hull Jr (1825-1892)</li>
-<li><strong>Children</strong>: George Hull (1860-1860)</li>
-</ul>
-<h3 id="samuel-st.-clair-decker-1865-1930-2">Samuel St. Clair Decker
-(1865-1930)</h3>
-<ul>
-<li><strong>Occupation</strong>: Wood chopper (per 1900 census)</li>
-<li><strong>Spouse</strong>: Anna Lide Sharp Decker (1866-1946)
-<ul>
-<li>Born: 22 Feb 1866, New Florence, PA</li>
-<li>Died: 4 Feb 1946 (aged 79), Shelocta, Indiana County, PA</li>
-<li>Parents: William T. and Mary Ann (Slick) Sharp</li>
-</ul></li>
-<li><strong>Children</strong>:
-<ul>
-<li>Harvey Reed Decker (1890-1922)</li>
-<li>May M. (b. May 1887)</li>
-<li>Lloyd A. (mentioned in Anna’s obituary)</li>
-<li>Samuel S. Jr. (mentioned in Anna’s obituary, lived in Pitcairn)</li>
-<li>Logan H. (mentioned in Anna’s obituary, lived in New Florence)</li>
-<li>A.L. Decker (mentioned in Anna’s obituary)</li>
-<li>Zora Decker Boyer (mentioned in Anna’s obituary)</li>
-<li>Jane Decker (mentioned in Anna’s obituary)</li>
-</ul></li>
-<li><strong>Census Records</strong>:
-<ul>
-<li>1900: Westmoreland Co. St. Clair Twp, dwelling 48, family 50</li>
-<li>1910: Westmoreland Co. St. Clair Twp, Laurel Hill Road, dwelling
-106, family 117</li>
-</ul></li>
-</ul>
-<h3 id="anna-lide-sharp-decker-1866-1946">Anna Lide Sharp Decker
-(1866-1946)</h3>
-<ul>
-<li><strong>Birth</strong>: 22 Feb 1866, New Florence, Westmoreland
-County, PA</li>
-<li><strong>Death</strong>: 4 Feb 1946 (aged 79), Shelocta, Indiana
-County, PA</li>
-<li><strong>Parents</strong>: William T. and Mary Ann (Slick) Sharp</li>
-<li><strong>Spouse</strong>: Samuel St. Clair Decker (1865-1930)</li>
-<li><strong>Children</strong>: Six children (as listed under Samuel
-St. Clair Decker)</li>
-<li><strong>Other Information</strong>:
-<ul>
-<li>Member of the Methodist Church</li>
-<li>Lived in McKeesport before returning to New Florence</li>
-<li>Moved to Shelocta seven years before her death</li>
-<li>Had 16 grandchildren and 6 great-grandchildren at time of death</li>
-<li>Had a sister named Elizabeth who lived in New York</li>
-</ul></li>
-</ul>
-<h3 id="harvey-reed-decker-1890-1922">Harvey Reed Decker
-(1890-1922)</h3>
-<ul>
-<li><strong>Birth</strong>: 9 Feb 1890, New Florence, PA</li>
-<li><strong>Death</strong>: 9 Jul 1922 (aged 32), New Florence,
-Westmoreland County, PA</li>
-<li><strong>Parents</strong>: Samuel St. Clair Decker and Anna Lide
-Sharp Decker (inferred)</li>
-<li><strong>Spouse</strong>: Tabitha V. McNeilly
-<ul>
-<li>Born: Jun 1, in Seward</li>
-<li>Appears on same headstone (1900-1922)</li>
-</ul></li>
-<li><strong>Occupation</strong>: Brakeman for R.R. Co.</li>
-<li><strong>Other Information</strong>:
-<ul>
-<li>Marriage license #39682 in Westmoreland County</li>
-<li>Residence at time of marriage: Pitcairn, PA</li>
-<li>No previous marriages noted</li>
-</ul></li>
-</ul>
-<h3 id="frank-vincent-decker-1909-1941">Frank Vincent Decker
-(1909-1941)</h3>
-<ul>
-<li><strong>Birth</strong>: 10 Jun 1909, New Florence, Westmoreland
-County, PA</li>
-<li><strong>Death</strong>: 29 Jul 1941 (aged 32), Shelocta, Indiana
-County, PA</li>
-<li><strong>Occupation</strong>: Teacher at Shelocta Borough School for
-8 years</li>
-<li><strong>Cause of Death</strong>: Heart condition</li>
-<li><strong>Other Information</strong>:
-<ul>
-<li>Died at his home, Indiana, R.D. 3</li>
-<li>Death certificate #65407</li>
-<li>Relationship to other Deckers not explicitly stated, but likely
-related to Samuel and Anna Decker family based on locations (New
-Florence, Shelocta)</li>
-</ul></li>
-</ul>
-<h2 id="clove-cemetery-sussex-county-nj-1">Clove Cemetery (Sussex
-County, NJ)</h2>
-<h3 id="william-b.-decker-1825-1861-1">William B. Decker
-(1825-1861)</h3>
-<ul>
-<li><strong>Spouse</strong>: Maria A. Decker (1829-1891)</li>
-<li><strong>Children</strong>:
-<ul>
-<li>William R. Decker (1853-1936)</li>
-<li>John B. Decker Jr (1861-1861)</li>
-</ul></li>
-</ul>
-<h3 id="josiah-decker-1740-1814-1">Josiah Decker (1740-1814)</h3>
-<ul>
-<li><strong>Family relationships not listed</strong></li>
-</ul>
-<h3 id="sarah-decker-decker-1806-1851-1">Sarah Decker Decker
-(1806-1851)</h3>
-<ul>
-<li><strong>Family relationships not listed</strong></li>
-</ul>
-<h3 id="william-r.-decker-1853-1936-1">William R. Decker
-(1853-1936)</h3>
-<ul>
-<li><strong>Parents</strong>: William B. Decker (1825-1861) and Maria A.
-Decker (1829-1891)</li>
-</ul>
-<h3 id="charity-m.-kilpatrick-decker-d.-1868-1">Charity M. Kilpatrick
-Decker (d. 1868)</h3>
-<ul>
-<li><strong>Family relationships not listed</strong></li>
-</ul>
-<h3 id="mary-louesa-dewitt-decker-1836-1912-1">Mary Louesa DeWitt Decker
-(1836-1912)</h3>
-<ul>
-<li><strong>Family relationships not listed</strong></li>
-</ul>
-<h2 id="old-clove-church-cemetery-wantage-nj-1">Old Clove Church
-Cemetery (Wantage, NJ)</h2>
-<h3 id="unknown-decker-1">Unknown Decker</h3>
-<ul>
-<li><strong>Family relationships not listed</strong></li>
-</ul>
-<h3 id="william-decker-1776-1851-1">William Decker (1776-1851)</h3>
-<ul>
-<li><strong>Family relationships not listed</strong></li>
-</ul>
-<h2 id="notes-1">Notes</h2>
-<ul>
-<li>This updated document includes the three previously missed Decker
-graves at Laurel Hill Furnace Cemetery</li>
-<li>Anna Lide Sharp Decker was Samuel St. Clair Decker’s wife,
-previously only identified as “Annie L.”</li>
-<li>Harvey Reed Decker was Samuel and Anna’s son, previously only
-identified as “Reed”</li>
-<li>Frank Vincent Decker’s exact relationship to the other Deckers is
-not explicitly stated in his memorial, but the locations (New Florence,
-Shelocta) suggest he may be related to the Samuel and Anna Decker
-family</li>
-<li>Based on Anna’s obituary, we now have names for all of Samuel and
-Anna’s six surviving children as of 1946</li>
-<li>The Decker name appears in multiple family lines, suggesting
-intermarriage between Decker families</li>
-<li>Sarah Decker Hull is a connection point between the Hull and Decker
-families</li>
-</ul>
+
+    <h1>Decker Family History</h1>
+
+    <h2>Table of Contents</h2>
+    <ul>
+        <li><a href="#background-of-report">Background of Report</a></li>
+        <li><a href="#european-origins">I. European Origins and Early American Settlement</a></li>
+        <li><a href="#common-ancestor">II. The Common Ancestor and Diverging Branches</a></li>
+        <li><a href="#deckertown">III. The Founding and Development of Deckertown</a></li>
+        <li><a href="#american-history">IV. The Decker Family in American History</a></li>
+        <li><a href="#geographic-expansion">V. Geographic Expansion of the Decker Family</a></li>
+        <li><a href="#naming-patterns">VI. Family Naming Patterns and Cultural Practices</a></li>
+        <li><a href="#notable-members">VII. Notable Decker Family Members</a></li>
+        <li><a href="#conclusion">VIII. Conclusion</a></li>
+        <li><a href="#family-tree">Family Tree Diagram</a></li>
+        <li><a href="#sources">Sources</a></li>
+    </ul>
+
+    <h2 id="background-of-report">Background of Report</h2><br><br>
+    This report presents a comprehensive analysis of the Decker family history, drawing from multiple primary sources including Charles E. Stickney's 1895 "History of Deckertown," a detailed family tree diagram, and three genealogical records. Together, these sources trace the Decker family's journey from their origins in Holland through their settlement and expansion across America over nearly four centuries.<br><br>
+    The Decker family's American story begins with Johannes De Decker (c. 1620), who helped negotiate New Amsterdam's surrender in 1664, and continues through multiple generations that shaped communities across New York, New Jersey, Pennsylvania, West Virginia, and Florida. This report highlights how the Decker family networks influenced settlement patterns, economic development, and community formation in early America, with particular focus on the founding and growth of Deckertown (now Sussex, New Jersey).<br><br>
+    Through careful analysis of multiple sources, this report identifies key family branches, documents significant historical events involving family members, traces geographic movements, and establishes connections between different generations. The result is a comprehensive genealogical and historical account that places the Decker family within the broader context of American history.<br><br>
+
+    <h2 id="european-origins">I. European Origins and Early American Settlement</h2><br><br>
+    <h3>European Roots</h3><br><br>
+    The Decker family's American story begins in Holland. According to genealogical records, the earliest known ancestor was Johannes De Decker (c. 1620), who played a significant role in American colonial history by helping negotiate New Amsterdam's surrender in 1664 when the Dutch colony was taken over by the British.<br><br>
+    His son, Jan Gerritse(n) Decker, was born around 1640 in Heerden, Gilderland, Holland (Netherlands) and emigrated to the American colonies. Jan married Grietje Hendrisckse Westercamp on March 23, 1664, in the Kingston (Wiltwyck) Reform Dutch Church in Ulster County, New York. Grietje was born between 1642-1644 in New Amsterdam (later New York).<br><br>
+    Jan Gerritse(n) Decker established himself in the Kingston area, appearing on the muster roll of the garrison at Wiltwyck (Kingston) in 1661. In 1663, he and his family faced hardship when they were taken prisoner along with their three children. He appears in Kingston Church records in 1688, 1697, and 1701, attended a trustees meeting in Rochester in 1703, and was listed on the 1709 tax list of Ulster County. He died before February 23, 1709, in Ulster County, NY.<br><br>
+    <h3>Second Generation in America</h3><br><br>
+    The second generation of Deckers in America included Hendrick Jansen Decker, born around 1667 in Accord (Kingston), Rochester Township, Ulster County, NY. Hendrick married twice: first to Jannetjen Kortright and later to Antje (Hannah) Geertje Quick on December 18, 1696, in the Kingston Reformed Dutch Church. Antje was born between 1668-1674 in Kingston and died around 1717 in Port Jervis, Deerpark, Orange County, NY. Their son Thomas was baptized on September 3, 1704.<br><br>
+    Another important second-generation member was Jan Gerritse Decker (b. July 28, 1688, Kingston, Ulster County, NY; d. Romney, Hampshire, WV), whose parents were Gerrett Janse Decker (b. February 14, 1664) and Margariet Grietjen Decker (b. about August 31, 1664). Jan married Barbara Janes DeWitt (b. April 17, 1692). His migration from New York to West Virginia demonstrates the family's early westward movement.<br><br>
+
+    <h2 id="common-ancestor">II. The Common Ancestor and Diverging Branches</h2><br><br>
+    The family tree identifies Johannis Decker (c. 1685) as a common ancestor for the various branches of the Decker family in America. Johannis was buried in Minisink, Orange County, NY. From this common ancestor, three main branches of the family emerged:<br><br>
+    <h3>Isaac's Line (Moving to Pennsylvania)</h3><br><br>
+    One branch of the family, beginning with Major John Decker (1712-1793), eventually migrated to Pennsylvania. This lineage continued through Isaac Decker (1743-~1840), who married Dorcas Chamberlain (~1750-). Isaac appears to be a pivotal figure connecting the New Jersey and Pennsylvania branches. His long life (nearly 100 years) spans from the colonial era through the early republic.<br><br>
+    Isaac and Dorcas had several children, including:<br><ul><li>Christopher Decker (~1780-, b. in Cumberland Co., PA)</li></ul><br><ul><li>Daniel Decker (~1787-1840, b. in Sussex Co., NJ, d. in Fairfield Twp, Westmoreland Co, PA)</li></ul><br><br>
+    The line continued through Jacob Decker (~1784-1835), who married Elizabeth Irwin (~1785-). Jacob may have been Isaac's son, representing the transition of the family from New Jersey to Pennsylvania. Jacob and Elizabeth had a son named Daniel Decker (1808-1887).<br><br>
+    Daniel Decker (1808-1887) married Sara Martin (~1813-1885) and had several children, including:<br><ul><li>Charles Martin Decker (1835-1871)</li></ul><br><ul><li>Job Decker (1837-1899)</li></ul><br><ul><li>Martin Decker (1841-1887)</li></ul><br><ul><li>James W. Decker (1843-1865)</li></ul><br><ul><li>William A. Decker (b. ~1843)</li></ul><br><ul><li>John Decker (1844-<1900)</li></ul><br><ul><li>Chamberlin Decker (b. 1846)</li></ul><br><br>
+    Daniel lived and died in St. Clair Township, Westmoreland County, PA, firmly establishing the Decker family in western Pennsylvania.<br><br>
+    Job Decker (1837-1899) continued the line, fathering Samuel St. Clair Decker (1865-1930), who married Anna Lide Sharpe (1866-1946). Samuel and Anna had a son named Clifford J. Decker (1896-), who lived in Pittsburgh, PA and married Anna Carbaugh (~1891-).<br><br>
+    Clifford J. Decker and Anna had a son named Clifford Decker (1915-), who married Marjorie (~1919-) and had three sons (b. ~1950). Clifford died in Gainesville, FL, representing the family's geographic expansion to Florida in the mid-20th century.<br><br>
+    <h3>Peter's Line (Remaining in New Jersey)</h3><br><br>
+    The second branch, which is more directly connected to the founding and development of Deckertown, remained in New Jersey. This lineage included:<br><ul><li>Peter Decker (1711-?), buried in Sussex County, NJ (likely Clove Cemetery)</li></ul><br><ul><li>Peter Decker (Landowner), buried in Sussex County, NJ (likely Old Clove Cemetery)</li></ul><br><ul><li>Josiah Decker (1740-1814), buried in Clove Cemetery, Sussex County, NJ</li></ul><br><ul><li>Bowdewine Decker (1763-1853), buried in Old Clove Church Cemetery, Sussex County, NJ</li></ul><br><ul><li>Samuel Decker (1790-?), possibly buried in Clove Cemetery, NJ</li></ul><br><ul><li>William B. Decker (1825-1861), buried in Clove Cemetery, Sussex County, NJ</li></ul><br><ul><li>Chester Edward Decker Sr. (1926-2023), buried in Clove Cemetery, Sussex County, NJ</li></ul><br><br>
+    <h3>Tobias Decker Line (West Virginia Frontier)</h3><br><br>
+    Another significant branch was established by Tobias Decker, who died on October 16, 1759, during an Indian attack. Tobias had brothers named Garrett and John Decker. This family settled in Monongalia County, WV in 1758, representing the frontier experience of the Decker family.<br><br>
+    Tobias and his brothers were among 11 riflemen with Braddock's Army who lost their way after the Battle of Monongahela during the French-Indian War (1754-55). After the battle, they settled near what is now Morgantown, WV. Tragically, Tobias, his wife, and two children were killed in a 1759 attack by Delaware Indians on the Decker's Creek settlement.<br><br>
+
+    <h2 id="deckertown">III. The Founding and Development of Deckertown</h2><br><br>
+    <h3>Peter Decker: The Founder</h3><br><br>
+    According to Stickney's "History of Deckertown," Peter Decker was the founder of what would become Deckertown. He and his wife Magdalena (née Isterbout) were described as "sturdy American born Hollanders" whose original German names were Petrus and Lecentje Decker. Peter cleared the virgin soil and established the first homestead in what would later become the town center.<br><br>
+    The settlement was initially called "Deckerville" after the founding family and began as a small collection of log houses in the wilderness. Peter's sons who settled around him in Deckertown were Samuel, Pope, and Hick, and they had daughters named Hannah, Maria, Catherina, Annetje, and Rebecca.<br><br>
+    By 1895, when Stickney wrote his history, approximately eight-tenths of the inhabitants of Deckertown were related by blood or marriage to Peter and Magdalena Decker, demonstrating the profound influence this family had on the community's development.<br><br>
+    <h3>Early Settlement Context</h3><br><br>
+    The early development of Deckertown was influenced by broader colonial patterns. The Minisink patent of 1702, issued by Queen Anne, conveyed lands from the lower end of Big Minisink Island northeast in New Jersey to certain parties, setting the stage for settlement disputes that would continue for decades.<br><br>
+    The settlement's growth was also shaped by its relationship with indigenous peoples, particularly the Munsey Indians (also called Munsies), whose tribal emblem or totem was a wolf that served as their signature and was recognized by other Indian tribes throughout the region.<br><br>
+    <h3>Infrastructure and Economic Development</h3><br><br>
+    The physical development of Deckertown is chronicled in Stickney's history. Andrew Willson built the first frame house in the neighborhood around the end of the Revolutionary War, followed by Peter Decker building his own frame house around the same time. Early roads were developed, including one that was later straightened in 1817 when the Hoboken and Milford turnpike was constructed.<br><br>
+    Economic activities in early Deckertown included the manufacture of potash, with Robert Morris Jr. specifically noted as being involved in this industry in 1772. The presence of a cider house and distillery, mentioned in a foreclosure action, suggests diversification of economic activities as the settlement grew.<br><br>
+    <h3>Land Ownership and Property Development</h3><br><br>
+    The division of Peter Decker's original land holdings into the many small parcels that later comprised Deckertown is described by Stickney as a process that cannot be followed in detail, but he notes that various speculators suffered losses in their dealings. The text suggests that Peter Decker never received the full reward he deserved for his preemption rights.<br><br>
+    The family tree diagram notes several important land transactions involving the Decker family:<br><ul><li>Peter Decker (Landowner) owned land surveyed for Richard Penn</li></ul><br><ul><li>Peter Decker sold part of Richard Penn land to Joseph Sharp (1813)</li></ul><br><ul><li>Samuel Decker (1790) sold land to Bowdewine Decker (1790)</li></ul><br><ul><li>Bowdewine Decker purchased land from Samuel Decker (1790)</li></ul><br><br>
+    A significant foreclosure action resulted in the Sheriff selling the cider house, distillery lots, and several other parcels of land in Deckertown. Bowdewine Decker was the purchaser, as recorded in a deed dated April 9, 1827. Seven or eight years later, Samuel Whittaker, William Rankin, and John Loomis bought large portions of the real estate, followed by Jacob E. Hornbeck, reflecting the changing patterns of land ownership as the town developed.<br><br>
+
+    <h2 id="american-history">IV. The Decker Family in American History</h2><br><br>
+    <h3>Revolutionary War Service</h3><br><br>
+    The Decker family played a role in the American Revolution, with several family members serving in the Continental Army. The genealogical records mention several Decker family members who served in the Revolutionary War, including Abraham Decker, Benjamin Decker, Conrad Decker, George Decker, Isaac Decker, Jacob Decker, Jacob C. Decker, John Decker, and Lawrence L. Decker.<br><br>
+    A letter from Revolutionary War veteran and pensioner George/Joris Decker describes his service, including being marched to the Delaware River on the frontiers in New York, then to North River to Stony Point, and later being drafted for a 9-month tour before the Battle of Long Island.<br><br>
+    <h3>French-Indian War and Frontier Conflicts</h3><br><br>
+    The Decker family was also involved in the French-Indian War (1754-55). Tobias and Garrett Decker were among 11 riflemen with Braddock's Army who, after the Battle of Monongahela, settled near what is now Morgantown, WV.<br><br>
+    The frontier experience of the Decker family is dramatically illustrated by the 1759 attack on the Decker's Creek settlement by Delaware Indians, which resulted in the deaths of Tobias Decker, his wife, and two children, along with other settlers. This tragic event highlights the dangers faced by frontier settlers during this period.<br><br>
+    From historical accounts: "On the afternoon of Oct 16, 1759 the settlement was attacked by about 30 Delaware Indians who murdered 8 persons, killed the livestock, burned the cabins and destroyed the crops. They captured Abel Westfall, took him to Fort Duquesne then to an Indian town in Ohio. 39 men & women were away from the settlement at the time. Those killed were Tobias Decker, his wife and two children; William Zern and wife; Abel Westfall's wife and son."<br><br>
+    <h3>Boundary Disputes</h3><br><br>
+    Boundary disputes between New York and New Jersey significantly affected the region's development. When Sussex County was organized in 1853 after being cut from Morris County, disputes between New York and New Jersey claimants to lands along the boundary line were at their height. New York State had been exercising authority and collecting taxes over lands that would later be included in New Jersey, while New Jersey Proprietors claimed that the boundary line should run from the Hudson River in a straight line to the northernmost branch of the Delaware River, which would have reached Cochecton. This would have placed Port Jervis and surrounding lands within New Jersey, leading to disputes, writs of ejectment, and "lively times along the border."<br><br>
+
+    <h2 id="geographic-expansion">V. Geographic Expansion of the Decker Family</h2><br><br>
+    The Decker family's geographic movement across America reflects broader patterns of American westward expansion:<br><br>
+    <h3>New York to New Jersey/West Virginia</h3><br><ul><li>Early Deckers like Jan Gerritse Decker were born in New York (Kingston, Ulster County)</li></ul><br><ul><li>Some descendants moved to New Jersey (Sussex County)</li></ul><br><ul><li>Others like Jan himself and Tobias Decker moved to what is now West Virginia</li></ul><br><br>
+    <h3>New Jersey to Pennsylvania</h3><br><ul><li>Isaac Decker's son Daniel was born in Sussex County, NJ but died in Westmoreland County, PA</li></ul><br><ul><li>This represents a significant westward migration</li></ul><br><br>
+    <h3>Settlement in Western Pennsylvania</h3><br><ul><li>Multiple generations lived and died in Westmoreland County, PA</li></ul><br><ul><li>Specific locations include Fairfield Township and St. Clair Township</li></ul><br><ul><li>The family established deep roots in this region</li></ul><br><br>
+    <h3>Expansion to Florida</h3><br><ul><li>By the mid-20th century, at least one branch (Clifford Decker) had moved to Gainesville, FL</li></ul><br><ul><li>Represents the continued geographic mobility of the family</li></ul><br><br>
+
+    <h2 id="naming-patterns">VI. Family Naming Patterns and Cultural Practices</h2><br><br>
+    The Decker family exhibits several naming patterns across generations:<br><br>
+    <h3>Recurring First Names</h3><br><ul><li>Isaac</li></ul><br><ul><li>Daniel</li></ul><br><ul><li>John</li></ul><br><ul><li>Clifford</li></ul><br><ul><li>Jacob</li></ul><br><ul><li>Peter</li></ul><br><br>
+    <h3>Generational Naming</h3><br><ul><li>Clifford J. Decker named his son Clifford</li></ul><br><ul><li>This pattern of naming sons after fathers appears in multiple instances</li></ul><br><br>
+    <h3>Cemetery Patterns</h3><br><ul><li>Multiple generations of the New Jersey branch are buried in Clove Cemetery</li></ul><br><ul><li>The Pennsylvania branch has multiple family members buried in St. Clair Township and Laurel Hill Furnace Cemetery</li></ul><br><ul><li>These burial patterns reflect the family's strong regional ties</li></ul><br><br>
+
+    <h2 id="notable-members">VII. Notable Decker Family Members</h2><br><br>
+    <h3>Johannes De Decker (c. 1620)</h3><br><ul><li>Helped negotiate New Amsterdam's surrender in 1664</li></ul><br><ul><li>Earliest known ancestor of the American Decker family</li></ul><br><br>
+    <h3>Jan Gerritse(n) Decker (c. 1640-1709)</h3><br><ul><li>Born in Heerden, Gilderland, Holland</li></ul><br><ul><li>Appeared on the muster roll of the garrison at Wiltwyck (Kingston) in 1661</li></ul><br><ul><li>Taken prisoner with his family in 1663</li></ul><br><ul><li>Married Grietje Hendrisckse Westercamp on March 23, 1664</li></ul><br><br>
+    <h3>Peter Decker (Founder of Deckertown)</h3><br><ul><li>Described as a "sturdy American born Hollander"</li></ul><br><ul><li>Original German name was Petrus Decker</li></ul><br><ul><li>Cleared virgin soil and established the first homestead in what would become Deckertown</li></ul><br><ul><li>Married Magdalena (née Isterbout)</li></ul><br><ul><li>Sons included Samuel, Pope, and Hick</li></ul><br><br>
+    <h3>Tobias Decker (d. 1759)</h3><br><ul><li>Settled in Monongalia Co., WV in April 1758</li></ul><br><ul><li>Veteran of Braddock's Expedition during the French-Indian War</li></ul><br><ul><li>Killed along with his wife and two children in an Indian attack on October 16, 1759</li></ul><br><br>
+    <h3>Isaac Decker (1743-~1840)</h3><br><ul><li>Lived nearly 100 years, spanning from colonial era through early republic</li></ul><br><ul><li>Pivotal figure connecting New Jersey and Pennsylvania branches</li></ul><br><ul><li>Married Dorcas Chamberlain</li></ul><br><ul><li>Father of Christopher Decker and Daniel Decker</li></ul><br><br>
+    <h3>Daniel Decker (1808-1887)</h3><br><ul><li>Established the family firmly in western Pennsylvania</li></ul><br><ul><li>Lived and died in St. Clair Township, Westmoreland County, PA</li></ul><br><ul><li>Married Sara Martin</li></ul><br><ul><li>Father of Job Decker and six other children</li></ul><br><br>
+    <h3>Samuel St. Clair Decker (1865-1930)</h3><br><ul><li>Married Anna Lide Sharpe (1866-1946)</li></ul><br><ul><li>Father of Clifford J. Decker</li></ul><br><ul><li>Buried in Laurel Hill Furnace Cemetery, PA</li></ul><br><br>
+    <h3>Clifford Decker (1915-)</h3><br><ul><li>Represents the family's geographic expansion to Florida</li></ul><br><ul><li>Son of Clifford J. Decker and Anna Carbaugh</li></ul><br><ul><li>Died in Gainesville, FL</li></ul><br><br>
+
+    <h2 id="conclusion">VIII. Conclusion</h2><br><br>
+    The comprehensive analysis of the Decker family history reveals a family deeply intertwined with the development of early America. From their origins in Holland to their settlement and expansion across New York, New Jersey, Pennsylvania, West Virginia, and beyond, the Deckers exemplify the American immigrant experience and the nation's westward expansion.<br><br>
+    The family's involvement in significant historical events—from the surrender of New Amsterdam to the French-Indian War, the Revolutionary War, and frontier conflicts—places them at the center of America's formative experiences. Their founding and development of Deckertown demonstrates how family networks influenced community formation and economic development in early America.<br><br>
+    The detailed genealogical information now available provides a comprehensive understanding of the Decker family's branches, movements, and contributions to American history. This integrated history serves as a valuable resource for understanding not just one family's journey, but the broader patterns of settlement, conflict, and community-building that shaped the American experience.<br><br>
+
+    <h2 id="family-tree">Family Tree Diagram</h2><br><br>
+    <div class="mermaid-container" id="diagram-container">
+        <pre>
+European Origins
++ Johannes De Decker (c.1620) (Helped negotiate New Amsterdam's surrender 1664)
+|   |
+|   + Jan Broerson Decker (c.1650)
+|   |
++ Jan Gerritse(n) Decker (c.1640-1709) (Born Heerden, Gilderland, Holland, settled Kingston, NY, muster roll 1661, prisoner 1663, d. bef Feb 23, 1709)
+|   = Grietje Hendrisckse Westercamp (1642-1644) (m. Mar 23, 1664, Kingston, NY)
+|   |
+|   + Hendrick Jansen Decker (c.1667) (Born Accord, Kingston, NY)
+|   |   = Jannetjen Kortright (1st wife)
+|   |   = Antje Geertje Quick (1668-1674) (m. Dec 18, 1696, d. ~1717 Port Jervis, NY)
+|   |       + Thomas Decker (bapt. Sep 3, 1704)
+|   |
+|   + Gerrett Janse Decker (1664) (b. Feb 14, 1664)
+|   |   --Parents--> Jan Gerritse Decker (1688-?) (b. Jul 28, 1688 Kingston, NY, d. Romney, WV)
+|   |   |   = Barbara Janes DeWitt (b. Apr 17, 1692)
+|   |   --Parents--> Margariet Grietjen Decker (c.1664) (b. abt Aug 31, 1664)
+|   |
+Common Ancestor
+|   + Johannis Decker (c.1685) (Buried Minisink, Orange Co., NY)
+|       |
+|       +----------------+----------------+----------------+
+|       |                |                |                |
+Pennsylvania Branch     New Jersey Branch West Virginia Branch
+|       |                |                |                |
+|   + Major John Decker (1712-1793) (Buried Minisink, Orange Co., NY)
+|   |   |
+|   |   + Isaac Decker (1743-~1840) (Lived ~100 yrs)
+|   |       = Dorcas Chamberlain (~1750)
+|   |       |
+|   |       + Christopher Decker (~1780) (Born Cumberland Co., PA)
+|   |       + Daniel Decker (~1787-1840) (Born Sussex Co., NJ, Died Westmoreland Co., PA)
+|   |       + Jacob Decker (~1784-1835)
+|   |           = Elizabeth Irwin (~1785)
+|   |           |
+|   |           + Daniel Decker (1808-1887) (Died St. Clair Twp, Westmoreland Co., PA, Buried West Fairfield Cemetery)
+|   |               = Sara Martin (~1813-1885)
+|   |               |
+|   |               + Charles Martin Decker (1835-1871)
+|   |               + Job Decker (1837-1899)
+|   |               |   |
+|   |               |   + Samuel St. Clair Decker (1865-1930) (Buried Laurel Hill Furnace Cemetery, PA, Wood chopper)
+|   |               |       = Anna Lide Sharpe (1866-1946) (b. Feb 22, 1866 New Florence, PA, d. Feb 4, 1946 Shelocta, PA, Buried Laurel Hill Furnace)
+|   |               |       |   + Harvey Reed Decker (1890-1922) (b. Feb 9, 1890, d. Jul 9, 1922, Buried Laurel Hill Furnace, Brakeman)
+|   |               |       |   |   = Tabitha V. McNeilly (1900-1922)
+|   |               |       |   + May M. Decker (b. May 1887)
+|   |               |       |   + Zora Decker (b. Dec 1891) (m. Boyer)
+|   |               |       |   + Jane Decker (b. Sep 1893)
+|   |               |       |   + Clifford J. Decker (1896) (Lived Pittsburgh)
+|   |               |       |   |   = Anna Carbaugh (~1891)
+|   |               |       |   |   |
+|   |               |       |   |   + Clifford Decker (1915) (Died Gainesville, FL)
+|   |               |       |   |       = Marjorie (~1919)
+|   |               |       |   |       |
+|   |               |       |   |       + Son1 (~1950)
+|   |               |       |   |       + Son2 (~1950)
+|   |               |       |   |       + Son3 (~1950)
+|   |               |       |   + Albert Decker (b. Oct 1897)
+|   |               |       |   + Samuel S. Decker Jr. (b. Feb 1900) (Lived Pitcairn)
+|   |               |       |   + Lloyd A. Decker (Lived New Florence)
+|   |               |       |   + Logan H. Decker (Lived New Florence)
+|   |               |       |
+|   |               + Martin Decker (1841-1887)
+|   |               + James W. Decker (1843-1865)
+|   |               + William A. Decker (~1843)
+|   |               + John Decker (1844-<1900)
+|   |               + Chamberlin Decker (1846)
+|       |
+|   + Peter Decker (1711-?) (Buried Sussex Co., NJ, likely Clove Cemetery)
+|       |
+|       + Peter Decker (Landowner) (Founder of Deckertown, orig. Petrus Decker)
+|       |   = Magdalena Isterbout (orig. Lecentje Decker)
+|       |   |
+|       |   + Samuel Decker
+|       |   + Pope Decker
+|       |   + Hick Decker
+|       |   + Hannah Decker
+|       |   + Maria Decker
+|       |   + Catherina Decker
+|       |   + Annetje Decker
+|       |   + Rebecca Decker
+|       |
+|       + Josiah Decker (1740-1814) (Buried Clove Cemetery, Sussex Co., NJ)
+|           |
+|           + Bowdewine Decker (1763-1853) (Buried Old Clove Church Cemetery, Wantage, NJ)
+|               |
+|               + Samuel Decker (1790-?) (Possibly buried Clove Cemetery, NJ)
+|                   |
+|                   + William B. Decker (1825-1861) (Buried Clove Cemetery, Sussex Co., NJ)
+|                       = Maria A. Decker (1829-1891)
+|                       |
+|                       + William R. Decker (1853-1936) (Buried Clove Cemetery)
+|                       |
+|                       +--Note--> Chester Edward Decker Sr. (1926-2023) (Buried Clove Cemetery, Sussex Co., NJ, later descendant, exact lineage unclear)
+|       |
+|   + Tobias Decker (?-1759) (Settled Monongalia Co., WV Apr 1758, Veteran Braddock's Expedition 1754-55, Killed in Delaware Indian attack Oct 16, 1759 at Decker's Creek)
+|       = Unknown Wife (d. Oct 16, 1759, Killed in attack)
+|       |
+|       + Child1 (d. Oct 16, 1759, Killed in attack)
+|       + Child2 (d. Oct 16, 1759, Killed in attack)
+|       |
+|       +--Event--> Attack["Oct 16, 1759: Decker's Creek attacked by ~30 Delaware Indians; 8 killed incl. Tobias, wife, 2 children, William Zern & wife, Abel Westfall's wife & son; livestock killed, cabins burned, crops destroyed; Abel Westfall captured, taken to Fort Duquesne & Ohio Indian town; 39 settlers away"]
+|       |
+|       +--Brothers--> Garrett Decker (Veteran Braddock's Expedition, Settled near Morgantown, WV post-1755)
+|       +--Brothers--> John Decker (Veteran Braddock's Expedition, Settled near Morgantown, WV post-1755)
+|       |
+|       +--Note--> Land["Land likely granted by Lord Fairfax, Northern Neck Proprietary, circa 1758"]
+        </pre>
+    </div>
+
+    <h2 id="sources">Sources</h2><br><br>
+    <ol><li>Stickney, Charles E. "History of Deckertown; which includes a history of the Crigar, Titsworth, and Decker families to some extent." Deckertown, N.J., 1895.</li></ol><br><br>
+    <ol><li>"Decker-Family Book" (genealogical record), 2025.</li></ol><br><br>
+    <ol><li>Decker Family Tree Diagram (provided by user), 2025.</li></ol><br><br>
+    <ol><li>"rmominee-fortunecity-ws-wga4-html-i303.pdf" (genealogical record), 2025.</li></ol><br><br>
+    <ol><li>"quickening-zapto-org-gramps-ppl-0-3-abfffc499be08b83130-html.pdf" (genealogical record of Jan Gerritse Decker), 2025.</li></ol><br><br>
+    <ol><li>"quickening-zapto-org-gramps-ppl-5-3-ba8a150a15067714f35-html.pdf" (genealogical record of Tobias Decker), 2025.</li></ol><br><br>
+
+    <h2><strong>Find a Grave Confirmed Burials</strong></h2><br>
+    Below are <strong>confirmed burials</strong> from Find a Grave for individuals appearing in the genealogy chart:<br><br>
+    <ul><li><strong><a href="https://www.findagrave.com/memorial/57753620/daniel-decker">Daniel Decker (1808-1887)</a></strong></li></ul><br>  - <strong>Burial</strong>: West Fairfield Cemetery, Fairfield Township, Westmoreland County, Pennsylvania, USA<br><br>
+    <ul><li><strong><a href="https://www.findagrave.com/memorial/33333214/isaac-decker">Isaac Decker (1794-1856)</a></strong></li></ul><br>  - <strong>Burial</strong>: Laurel Hill Furnace Cemetery, Saint Clair Township, Westmoreland County, Pennsylvania, USA<br><br>
+    <ul><li><strong><a href="https://www.findagrave.com/memorial/86567652/isabella-decker">Isabella Davis Decker (1844-1920)</a></strong></li></ul><br>  - <strong>Burial</strong>: Laurel Hill Furnace Cemetery, Saint Clair Township, Westmoreland County, Pennsylvania, USA<br><br>
+    <ul><li><strong><a href="https://www.findagrave.com/memorial/125481647/samuel-st._clair-decker">Samuel St. Clair Decker (1865-1930)</a></strong></li></ul><br>  - <strong>Burial</strong>: Laurel Hill Furnace Cemetery, Saint Clair Township, Westmoreland County, Pennsylvania, USA<br><br>
+    <ul><li><strong><a href="https://www.findagrave.com/memorial/125481679/anna-lide-decker">Anna Lide Sharp Decker (1866-1946)</a></strong></li></ul><br>  - <strong>Burial</strong>: Laurel Hill Furnace Cemetery, Saint Clair Township, Westmoreland County, Pennsylvania, USA<br><br>
+    <ul><li><strong><a href="https://www.findagrave.com/memorial/85048797/harvey-reed-decker">Harvey Reed Decker (1890-1922)</a></strong></li></ul><br>  - <strong>Burial</strong>: Laurel Hill Furnace Cemetery, Saint Clair Township, Westmoreland County, Pennsylvania, USA<br><br>
+    <ul><li><strong><a href="https://www.findagrave.com/memorial/125484972/frank-vincent-decker">Frank Vincent Decker (1909-1941)</a></strong></li></ul><br>  - <strong>Burial</strong>: Laurel Hill Furnace Cemetery, Saint Clair Township, Westmoreland County, Pennsylvania, USA<br><br>
+    <ul><li>**[Logan Decker-Decker Historian? https://www.findagrave.com/memorial/81615894/logan-h.-decker</li></ul><br>
+
+    <h1>Decker Family Grave locations - A work in progress</h1><br><br>
+    <h2>Laurel Hill Furnace Cemetery (Westmoreland County, PA)</h2><br><br>
+    <h3>John Decker Hull (1834-1866)</h3><br><ul><li><strong>Parents</strong>: </li></ul><br>  - Tobias Sechler Hull Sr (1803-1887)<br>  - Sarah Decker Hull (1815-1844)<br><ul><li><strong>Spouse</strong>: Sarah Jane Hair Hull (1839-1860)</li></ul><br><ul><li><strong>Siblings</strong>: Tobias Seckler Hull Jr (1825-1892)</li></ul><br><ul><li><strong>Children</strong>: George Hull (1860-1860)</li></ul><br><br>
+    <h3>Samuel St. Clair Decker (1865-1930)</h3><br><ul><li><strong>Occupation</strong>: Wood chopper (per 1900 census)</li></ul><br><ul><li><strong>Spouse</strong>: Annie L. (b. Feb 1868)</li></ul><br><ul><li><strong>Children</strong>:</li></ul><br>  - May M. (b. May 1887)<br>  - Reed (b. Feb 1890)<br>  - Zora (b. Dec 1891)<br>  - Jane (b. Sep 1893)<br>  - Clifford (b. Nov 1895)<br>  - Albert (b. Oct 1897)<br>  - Samuel S. (b. Feb 1900)<br><ul><li><strong>Census Records</strong>:</li></ul><br>  - 1900: Westmoreland Co. St. Clair Twp, dwelling 48, family 50<br>  - 1910: Westmoreland Co. St. Clair Twp, Laurel Hill Road, dwelling 106, family 117<br><ul><li> <strong>Additional Photo</strong> </li></ul><br>  - Death Certificate https://www.findagrave.com/memorial/125481647/samuel-st._clair-decker/photo<br><br>
+
+    <h2>Clove Cemetery (Sussex County, NJ)</h2><br><br>
+    <h3>William B. Decker (1825-1861)</h3><br><ul><li><strong>Spouse</strong>: Maria A. Decker (1829-1891)</li></ul><br><ul><li><strong>Children</strong>:</li></ul><br>  - William R. Decker (1853-1936)<br>  - John B. Decker Jr (1861-1861)<br><br>
+    <h3>Josiah Decker (1740-1814)</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+    <h3>Sarah Decker Decker (1806-1851)</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+    <h3>William R. Decker (1853-1936)</h3><br><ul><li><strong>Parents</strong>: William B. Decker (1825-1861) and Maria A. Decker (1829-1891)</li></ul><br><br>
+    <h3>Charity M. Kilpatrick Decker (d. 1868)</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+    <h3>Mary Louesa DeWitt Decker (1836-1912)</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+
+    <h2>Old Clove Church Cemetery (Wantage, NJ)</h2><br><br>
+    <h3>Unknown Decker</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+    <h3>William Decker (1776-1851)</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+
+    <h2>Notes</h2><br><ul><li>This document captures the family relationships as listed on the Find A Grave memorial pages</li></ul><br><ul><li>Some memorial pages do not list family relationships</li></ul><br><ul><li>The Decker name appears in multiple family lines, suggesting intermarriage between Decker families</li></ul><br><ul><li>Sarah Decker Hull is a connection point between the Hull and Decker families</li></ul><br><br>
+
+    <h1>Updated Decker Family Relationships</h1><br><br>
+    <h2>Laurel Hill Furnace Cemetery (Westmoreland County, PA)</h2><br><br>
+    <h3>John Decker Hull (1834-1866)</h3><br><ul><li><strong>Parents</strong>: </li></ul><br>  - Tobias Sechler Hull Sr (1803-1887)<br>  - Sarah Decker Hull (1815-1844)<br><ul><li><strong>Spouse</strong>: Sarah Jane Hair Hull (1839-1860)</li></ul><br><ul><li><strong>Siblings</strong>: Tobias Seckler Hull Jr (1825-1892)</li></ul><br><ul><li><strong>Children</strong>: George Hull (1860-1860)</li></ul><br><br>
+    <h3>Samuel St. Clair Decker (1865-1930)</h3><br><ul><li><strong>Occupation</strong>: Wood chopper (per 1900 census)</li></ul><br><ul><li><strong>Spouse</strong>: Anna Lide Sharp Decker (1866-1946)</li></ul><br>  - Born: 22 Feb 1866, New Florence, PA<br>  - Died: 4 Feb 1946 (aged 79), Shelocta, Indiana County, PA<br>  - Parents: William T. and Mary Ann (Slick) Sharp<br><ul><li><strong>Children</strong>:</li></ul><br>  - Harvey Reed Decker (1890-1922)<br>  - May M. (b. May 1887)<br>  - Lloyd A. (mentioned in Anna's obituary)<br>  - Samuel S. Jr. (mentioned in Anna's obituary, lived in Pitcairn)<br>  - Logan H. (mentioned in Anna's obituary, lived in New Florence)<br>  - A.L. Decker (mentioned in Anna's obituary)<br>  - Zora Decker Boyer (mentioned in Anna's obituary)<br>  - Jane Decker (mentioned in Anna's obituary)<br><ul><li><strong>Census Records</strong>:</li></ul><br>  - 1900: Westmoreland Co. St. Clair Twp, dwelling 48, family 50<br>  - 1910: Westmoreland Co. St. Clair Twp, Laurel Hill Road, dwelling 106, family 117<br><br>
+    <h3>Anna Lide Sharp Decker (1866-1946)</h3><br><ul><li><strong>Birth</strong>: 22 Feb 1866, New Florence, Westmoreland County, PA</li></ul><br><ul><li><strong>Death</strong>: 4 Feb 1946 (aged 79), Shelocta, Indiana County, PA</li></ul><br><ul><li><strong>Parents</strong>: William T. and Mary Ann (Slick) Sharp</li></ul><br><ul><li><strong>Spouse</strong>: Samuel St. Clair Decker (1865-1930)</li></ul><br><ul><li><strong>Children</strong>: Six children (as listed under Samuel St. Clair Decker)</li></ul><br><ul><li><strong>Other Information</strong>: </li></ul><br>  - Member of the Methodist Church<br>  - Lived in McKeesport before returning to New Florence<br>  - Moved to Shelocta seven years before her death<br>  - Had 16 grandchildren and 6 great-grandchildren at time of death<br>  - Had a sister named Elizabeth who lived in New York<br><br>
+    <h3>Harvey Reed Decker (1890-1922)</h3><br><ul><li><strong>Birth</strong>: 9 Feb 1890, New Florence, PA</li></ul><br><ul><li><strong>Death</strong>: 9 Jul 1922 (aged 32), New Florence, Westmoreland County, PA</li></ul><br><ul><li><strong>Parents</strong>: Samuel St. Clair Decker and Anna Lide Sharp Decker (inferred)</li></ul><br><ul><li><strong>Spouse</strong>: Tabitha V. McNeilly</li></ul><br>  - Born: Jun 1, in Seward<br>  - Appears on same headstone (1900-1922)<br><ul><li><strong>Occupation</strong>: Brakeman for R.R. Co.</li></ul><br><ul><li><strong>Other Information</strong>:</li></ul><br>  - Marriage license #39682 in Westmoreland County<br>  - Residence at time of marriage: Pitcairn, PA<br>  - No previous marriages noted<br><br>
+    <h3>Frank Vincent Decker (1909-1941)</h3><br><ul><li><strong>Birth</strong>: 10 Jun 1909, New Florence, Westmoreland County, PA</li></ul><br><ul><li><strong>Death</strong>: 29 Jul 1941 (aged 32), Shelocta, Indiana County, PA</li></ul><br><ul><li><strong>Occupation</strong>: Teacher at Shelocta Borough School for 8 years</li></ul><br><ul><li><strong>Cause of Death</strong>: Heart condition</li></ul><br><ul><li><strong>Other Information</strong>:</li></ul><br>  - Died at his home, Indiana, R.D. 3<br>  - Death certificate #65407<br>  - Relationship to other Deckers not explicitly stated, but likely related to Samuel and Anna Decker family based on locations (New Florence, Shelocta)<br><br>
+
+    <h2>Clove Cemetery (Sussex County, NJ)</h2><br><br>
+    <h3>William B. Decker (1825-1861)</h3><br><ul><li><strong>Spouse</strong>: Maria A. Decker (1829-1891)</li></ul><br><ul><li><strong>Children</strong>:</li></ul><br>  - William R. Decker (1853-1936)<br>  - John B. Decker Jr (1861-1861)<br><br>
+    <h3>Josiah Decker (1740-1814)</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+    <h3>Sarah Decker Decker (1806-1851)</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+    <h3>William R. Decker (1853-1936)</h3><br><ul><li><strong>Parents</strong>: William B. Decker (1825-1861) and Maria A. Decker (1829-1891)</li></ul><br><br>
+    <h3>Charity M. Kilpatrick Decker (d. 1868)</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+    <h3>Mary Louesa DeWitt Decker (1836-1912)</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+
+    <h2>Old Clove Church Cemetery (Wantage, NJ)</h2><br><br>
+    <h3>Unknown Decker</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+    <h3>William Decker (1776-1851)</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+
+    <h2>Notes</h2><br><ul><li>This document captures the family relationships as listed on the Find A Grave memorial pages</li></ul><br><ul><li>Some memorial pages do not list family relationships</li></ul><br><ul><li>The Decker name appears in multiple family lines, suggesting intermarriage between Decker families</li></ul><br><ul><li>Sarah Decker Hull is a connection point between the Hull and Decker families</li></ul><br><br>
+
+    <h1>Updated Decker Family Relationships</h1><br><br>
+    <h2>Laurel Hill Furnace Cemetery (Westmoreland County, PA)</h2><br><br>
+    <h3>John Decker Hull (1834-1866)</h3><br><ul><li><strong>Parents</strong>: </li></ul><br>  - Tobias Sechler Hull Sr (1803-1887)<br>  - Sarah Decker Hull (1815-1844)<br><ul><li><strong>Spouse</strong>: Sarah Jane Hair Hull (1839-1860)</li></ul><br><ul><li><strong>Siblings</strong>: Tobias Seckler Hull Jr (1825-1892)</li></ul><br><ul><li><strong>Children</strong>: George Hull (1860-1860)</li></ul><br><br>
+    <h3>Samuel St. Clair Decker (1865-1930)</h3><br><ul><li><strong>Occupation</strong>: Wood chopper (per 1900 census)</li></ul><br><ul><li><strong>Spouse</strong>: Anna Lide Sharp Decker (1866-1946)</li></ul><br>  - Born: 22 Feb 1866, New Florence, PA<br>  - Died: 4 Feb 1946 (aged 79), Shelocta, Indiana County, PA<br>  - Parents: William T. and Mary Ann (Slick) Sharp<br><ul><li><strong>Children</strong>:</li></ul><br>  - Harvey Reed Decker (1890-1922)<br>  - May M. (b. May 1887)<br>  - Lloyd A. (mentioned in Anna's obituary)<br>  - Samuel S. Jr. (mentioned in Anna's obituary, lived in Pitcairn)<br>  - Logan H. (mentioned in Anna's obituary, lived in New Florence)<br>  - A.L. Decker (mentioned in Anna's obituary)<br>  - Zora Decker Boyer (mentioned in Anna's obituary)<br>  - Jane Decker (mentioned in Anna's obituary)<br><ul><li><strong>Census Records</strong>:</li></ul><br>  - 1900: Westmoreland Co. St. Clair Twp, dwelling 48, family 50<br>  - 1910: Westmoreland Co. St. Clair Twp, Laurel Hill Road, dwelling 106, family 117<br><br>
+    <h3>Anna Lide Sharp Decker (1866-1946)</h3><br><ul><li><strong>Birth</strong>: 22 Feb 1866, New Florence, Westmoreland County, PA</li></ul><br><ul><li><strong>Death</strong>: 4 Feb 1946 (aged 79), Shelocta, Indiana County, PA</li></ul><br><ul><li><strong>Parents</strong>: William T. and Mary Ann (Slick) Sharp</li></ul><br><ul><li><strong>Spouse</strong>: Samuel St. Clair Decker (1865-1930)</li></ul><br><ul><li><strong>Children</strong>: Six children (as listed under Samuel St. Clair Decker)</li></ul><br><ul><li><strong>Other Information</strong>: </li></ul><br>  - Member of the Methodist Church<br>  - Lived in McKeesport before returning to New Florence<br>  - Moved to Shelocta seven years before her death<br>  - Had 16 grandchildren and 6 great-grandchildren at time of death<br>  - Had a sister named Elizabeth who lived in New York<br><br>
+    <h3>Harvey Reed Decker (1890-1922)</h3><br><ul><li><strong>Birth</strong>: 9 Feb 1890, New Florence, PA</li></ul><br><ul><li><strong>Death</strong>: 9 Jul 1922 (aged 32), New Florence, Westmoreland County, PA</li></ul><br><ul><li><strong>Parents</strong>: Samuel St. Clair Decker and Anna Lide Sharp Decker (inferred)</li></ul><br><ul><li><strong>Spouse</strong>: Tabitha V. McNeilly</li></ul><br>  - Born: Jun 1, in Seward<br>  - Appears on same headstone (1900-1922)<br><ul><li><strong>Occupation</strong>: Brakeman for R.R. Co.</li></ul><br><ul><li><strong>Other Information</strong>:</li></ul><br>  - Marriage license #39682 in Westmoreland County<br>  - Residence at time of marriage: Pitcairn, PA<br>  - No previous marriages noted<br><br>
+    <h3>Frank Vincent Decker (1909-1941)</h3><br><ul><li><strong>Birth</strong>: 10 Jun 1909, New Florence, Westmoreland County, PA</li></ul><br><ul><li><strong>Death</strong>: 29 Jul 1941 (aged 32), Shelocta, Indiana County, PA</li></ul><br><ul><li><strong>Occupation</strong>: Teacher at Shelocta Borough School for 8 years</li></ul><br><ul><li><strong>Cause of Death</strong>: Heart condition</li></ul><br><ul><li><strong>Other Information</strong>:</li></ul><br>  - Died at his home, Indiana, R.D. 3<br>  - Death certificate #65407<br>  - Relationship to other Deckers not explicitly stated, but likely related to Samuel and Anna Decker family based on locations (New Florence, Shelocta)<br><br>
+
+    <h2>Clove Cemetery (Sussex County, NJ)</h2><br><br>
+    <h3>William B. Decker (1825-1861)</h3><br><ul><li><strong>Spouse</strong>: Maria A. Decker (1829-1891)</li></ul><br><ul><li><strong>Children</strong>:</li></ul><br>  - William R. Decker (1853-1936)<br>  - John B. Decker Jr (1861-1861)<br><br>
+    <h3>Josiah Decker (1740-1814)</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+    <h3>Sarah Decker Decker (1806-1851)</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+    <h3>William R. Decker (1853-1936)</h3><br><ul><li><strong>Parents</strong>: William B. Decker (1825-1861) and Maria A. Decker (1829-1891)</li></ul><br><br>
+    <h3>Charity M. Kilpatrick Decker (d. 1868)</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+    <h3>Mary Louesa DeWitt Decker (1836-1912)</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+
+    <h2>Old Clove Church Cemetery (Wantage, NJ)</h2><br><br>
+    <h3>Unknown Decker</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+    <h3>William Decker (1776-1851)</h3><br><ul><li><strong>Family relationships not listed</strong></li></ul><br><br>
+
+    <h2>Notes</h2><br><ul><li>This updated document includes the three previously missed Decker graves at Laurel Hill Furnace Cemetery</li></ul><br><ul><li>Anna Lide Sharp Decker was Samuel St. Clair Decker's wife, previously only identified as "Annie L."</li></ul><br><ul><li>Harvey Reed Decker was Samuel and Anna's son, previously only identified as "Reed"</li></ul><br><ul><li>Frank Vincent Decker's exact relationship to the other Deckers is not explicitly stated in his memorial, but the locations (New Florence, Shelocta) suggest he may be related to the Samuel and Anna Decker family</li></ul><br><ul><li>Based on Anna's obituary, we now have names for all of Samuel and Anna's six surviving children as of 1946</li></ul><br><ul><li>The Decker name appears in multiple family lines, suggesting intermarriage between Decker families</li></ul><br><ul><li>Sarah Decker Hull is a connection point between the Hull and Decker families</li></ul>
+
 </body>
 </html>
-<script>document.addEventListener("DOMContentLoaded", function() {if (window.mermaid) {mermaid.init(undefined, document.querySelectorAll(".mermaid"));}});</script>
