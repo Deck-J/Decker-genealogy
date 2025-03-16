@@ -3,17 +3,16 @@ name: Deploy GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # Adjust if necessary
 
 permissions:
   contents: read
   pages: write
-  id-token: write
+  id-token: write  # Required for authentication
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -54,12 +53,15 @@ jobs:
           </script>" >> _site/index.html
 
       - name: Ensure GitHub Pages Artifact Upload Completes
-        run: sleep 10  # Wait for any async processes before upload
+        run: sleep 10  # Prevents race conditions before upload
 
       - name: Upload GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+
+      - name: Wait for Artifact Availability
+        run: sleep 15  # Ensure the artifact is available before deployment
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
