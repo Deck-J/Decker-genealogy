@@ -45,7 +45,7 @@ jobs:
           </script>" >> _site/index.html
 
       - name: Upload GitHub Pages Artifact
-        uses: actions/upload-pages-artifact@v2  # Ensure correct version
+        uses: actions/upload-pages-artifact@v3  # Ensure correct version
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
