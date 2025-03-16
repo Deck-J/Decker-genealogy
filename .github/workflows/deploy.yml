@@ -3,16 +3,20 @@ name: Deploy GitHub Pages
 on:
   push:
     branches:
-      - main  # Adjust if necessary
+      - main  # Ensure this matches the Pages source
 
 permissions:
   contents: read
   pages: write
-  id-token: write  # Required for authentication
+  id-token: write  # Required for GitHub OIDC authentication
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -61,7 +65,8 @@ jobs:
           path: _site
 
       - name: Wait for Artifact Availability
-        run: sleep 15  # Ensure the artifact is available before deployment
+        run: sleep 15  # Ensures artifact is fully available
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v2
