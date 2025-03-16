@@ -259,9 +259,9 @@ The detailed genealogical information now available provides a comprehensive und
 flowchart TD
     %% European Origins
     JohannesDeDecker["Johannes De Decker (c. 1620)\nHelped negotiate New Amsterdam's surrender (1664)\nSettled on Staten Island (present-day Decker Family Farm of Richmond Hill)\nOccupation: Commissary\nArrived on English ship Black Eagle"] --o JanBroerson["Jan Broerson Decker (c. 1650)\nBorn: Germany\nBuried: Old Dutch Church, Kingston, NY"]
-    note left of JohannesDeDecker
-      Note: The relationship between Johannes De Decker and Jan Broerson Decker is uncertain and may not be as depicted.
-    end
+note left of JohannesDeDecker
+  Note: The relationship between Johannes De Decker and Jan Broerson Decker is uncertain and may not be as depicted.
+end
 
     %% Early American Generations
     JanGerritse["Jan Gerritse Decker (c. 1640 - 1709)\nBorn in Holland, settled in Kingston, NY"] --> HendrickJansen["Hendrick Jansen Decker (c. 1667)\nMarried Antje Geertje Quick"]
