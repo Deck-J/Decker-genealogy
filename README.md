@@ -255,7 +255,7 @@ The family's involvement in significant historical events—from the surrender o
 The detailed genealogical information now available provides a comprehensive understanding of the Decker family's branches, movements, and contributions to American history. This integrated history serves as a valuable resource for understanding not just one family's journey, but the broader patterns of settlement, conflict, and community-building that shaped the American experience.
 
 ## Family Tree Diagram
-
+```plaintext
 European Origins
 + Johannes De Decker (c.1620) (Helped negotiate New Amsterdam's surrender 1664)
 |   |
@@ -363,3 +363,4 @@ Pennsylvania Branch     New Jersey Branch West Virginia Branch
 |       +--Brothers--> John Decker (Veteran Braddock's Expedition, Settled near Morgantown, WV post-1755)
 |       |
 |       +--Note--> Land["Land likely granted by Lord Fairfax, Northern Neck Proprietary, circa 1758"]
+```
