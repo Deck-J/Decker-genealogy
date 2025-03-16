@@ -255,112 +255,97 @@ The family's involvement in significant historical events—from the surrender o
 The detailed genealogical information now available provides a comprehensive understanding of the Decker family's branches, movements, and contributions to American history. This integrated history serves as a valuable resource for understanding not just one family's journey, but the broader patterns of settlement, conflict, and community-building that shaped the American experience.
 
 ## Family Tree Diagram
-```plaintext
-European Origins
-+ Johannes De Decker (c.1620) (Helped negotiate New Amsterdam's surrender 1664)
-|   |
-|   + Jan Broerson Decker (c.1650)
-|   |
-+ Jan Gerritse(n) Decker (c.1640-1709) (Born Heerden, Gilderland, Holland, settled Kingston, NY, muster roll 1661, prisoner 1663, d. bef Feb 23, 1709)
-|   = Grietje Hendrisckse Westercamp (1642-1644) (m. Mar 23, 1664, Kingston, NY)
-|   |
-|   + Hendrick Jansen Decker (c.1667) (Born Accord, Kingston, NY)
-|   |   = Jannetjen Kortright (1st wife)
-|   |   = Antje Geertje Quick (1668-1674) (m. Dec 18, 1696, d. ~1717 Port Jervis, NY)
-|   |       + Thomas Decker (bapt. Sep 3, 1704)
-|   |
-|   + Gerrett Janse Decker (1664) (b. Feb 14, 1664)
-|   |   --Parents--> Jan Gerritse Decker (1688-?) (b. Jul 28, 1688 Kingston, NY, d. Romney, WV)
-|   |   |   = Barbara Janes DeWitt (b. Apr 17, 1692)
-|   |   --Parents--> Margariet Grietjen Decker (c.1664) (b. abt Aug 31, 1664)
-|   |
-Common Ancestor
-|   + Johannis Decker (c.1685) (Buried Minisink, Orange Co., NY)
-|       |
-|       +----------------+----------------+----------------+
-|       |                |                |                |
-Pennsylvania Branch     New Jersey Branch West Virginia Branch
-|       |                |                |                |
-|   + Major John Decker (1712-1793) (Buried Minisink, Orange Co., NY)
-|   |   |
-|   |   + Isaac Decker (1743-~1840) (Lived ~100 yrs)
-|   |       = Dorcas Chamberlain (~1750)
-|   |       |
-|   |       + Christopher Decker (~1780) (Born Cumberland Co., PA)
-|   |       + Daniel Decker (~1787-1840) (Born Sussex Co., NJ, Died Westmoreland Co., PA)
-|   |       + Jacob Decker (~1784-1835)
-|   |           = Elizabeth Irwin (~1785)
-|   |           |
-|   |           + Daniel Decker (1808-1887) (Died St. Clair Twp, Westmoreland Co., PA, Buried West Fairfield Cemetery)
-|   |               = Sara Martin (~1813-1885)
-|   |               |
-|   |               + Charles Martin Decker (1835-1871)
-|   |               + Job Decker (1837-1899)
-|   |               |   |
-|   |               |   + Samuel St. Clair Decker (1865-1930) (Buried Laurel Hill Furnace Cemetery, PA, Wood chopper)
-|   |               |       = Anna Lide Sharpe (1866-1946) (b. Feb 22, 1866 New Florence, PA, d. Feb 4, 1946 Shelocta, PA, Buried Laurel Hill Furnace)
-|   |               |       |   + Harvey Reed Decker (1890-1922) (b. Feb 9, 1890, d. Jul 9, 1922, Buried Laurel Hill Furnace, Brakeman)
-|   |               |       |   |   = Tabitha V. McNeilly (1900-1922)
-|   |               |       |   + May M. Decker (b. May 1887)
-|   |               |       |   + Zora Decker (b. Dec 1891) (m. Boyer)
-|   |               |       |   + Jane Decker (b. Sep 1893)
-|   |               |       |   + Clifford J. Decker (1896) (Lived Pittsburgh)
-|   |               |       |   |   = Anna Carbaugh (~1891)
-|   |               |       |   |   |
-|   |               |       |   |   + Clifford Decker (1915) (Died Gainesville, FL)
-|   |               |       |   |       = Marjorie (~1919)
-|   |               |       |   |       |
-|   |               |       |   |       + Son1 (~1950)
-|   |               |       |   |       + Son2 (~1950)
-|   |               |       |   |       + Son3 (~1950)
-|   |               |       |   + Albert Decker (b. Oct 1897)
-|   |               |       |   + Samuel S. Decker Jr. (b. Feb 1900) (Lived Pitcairn)
-|   |               |       |   + Lloyd A. Decker (Lived New Florence)
-|   |               |       |   + Logan H. Decker (Lived New Florence)
-|   |               |       |
-|   |               + Martin Decker (1841-1887)
-|   |               + James W. Decker (1843-1865)
-|   |               + William A. Decker (~1843)
-|   |               + John Decker (1844-<1900)
-|   |               + Chamberlin Decker (1846)
-|       |
-|   + Peter Decker (1711-?) (Buried Sussex Co., NJ, likely Clove Cemetery)
-|       |
-|       + Peter Decker (Landowner) (Founder of Deckertown, orig. Petrus Decker)
-|       |   = Magdalena Isterbout (orig. Lecentje Decker)
-|       |   |
-|       |   + Samuel Decker
-|       |   + Pope Decker
-|       |   + Hick Decker
-|       |   + Hannah Decker
-|       |   + Maria Decker
-|       |   + Catherina Decker
-|       |   + Annetje Decker
-|       |   + Rebecca Decker
-|       |
-|       + Josiah Decker (1740-1814) (Buried Clove Cemetery, Sussex Co., NJ)
-|           |
-|           + Bowdewine Decker (1763-1853) (Buried Old Clove Church Cemetery, Wantage, NJ)
-|               |
-|               + Samuel Decker (1790-?) (Possibly buried Clove Cemetery, NJ)
-|                   |
-|                   + William B. Decker (1825-1861) (Buried Clove Cemetery, Sussex Co., NJ)
-|                       = Maria A. Decker (1829-1891)
-|                       |
-|                       + William R. Decker (1853-1936) (Buried Clove Cemetery)
-|                       |
-|                       +--Note--> Chester Edward Decker Sr. (1926-2023) (Buried Clove Cemetery, Sussex Co., NJ, later descendant, exact lineage unclear)
-|       |
-|   + Tobias Decker (?-1759) (Settled Monongalia Co., WV Apr 1758, Veteran Braddock's Expedition 1754-55, Killed in Delaware Indian attack Oct 16, 1759 at Decker's Creek)
-|       = Unknown Wife (d. Oct 16, 1759, Killed in attack)
-|       |
-|       + Child1 (d. Oct 16, 1759, Killed in attack)
-|       + Child2 (d. Oct 16, 1759, Killed in attack)
-|       |
-|       +--Event--> Attack["Oct 16, 1759: Decker's Creek attacked by ~30 Delaware Indians; 8 killed incl. Tobias, wife, 2 children, William Zern & wife, Abel Westfall's wife & son; livestock killed, cabins burned, crops destroyed; Abel Westfall captured, taken to Fort Duquesne & Ohio Indian town; 39 settlers away"]
-|       |
-|       +--Brothers--> Garrett Decker (Veteran Braddock's Expedition, Settled near Morgantown, WV post-1755)
-|       +--Brothers--> John Decker (Veteran Braddock's Expedition, Settled near Morgantown, WV post-1755)
-|       |
-|       +--Note--> Land["Land likely granted by Lord Fairfax, Northern Neck Proprietary, circa 1758"]
+```Mermaid
+flowchart TD
+    %% European Origins
+    JohannesDeDecker["Johannes De Decker (c. 1620)\nHelped negotiate New Amsterdam's surrender (1664)\nSettled on Staten Island (present-day Decker Family Farm of Richmond Hill)\nOccupation: Commissary\nArrived on English ship Black Eagle"] --o JanBroerson["Jan Broerson Decker (c. 1650)\nBorn: Germany\nBuried: Old Dutch Church, Kingston, NY"]
+    note left of JohannesDeDecker
+      Note: The relationship between Johannes De Decker and Jan Broerson Decker is uncertain and may not be as depicted.
+    end
+
+    %% Early American Generations
+    JanGerritse["Jan Gerritse Decker (c. 1640 - 1709)\nBorn in Holland, settled in Kingston, NY"] --> HendrickJansen["Hendrick Jansen Decker (c. 1667)\nMarried Antje Geertje Quick"]
+
+    GerrettJanse["Gerrett Janse Decker (1664)"] -- "Parents" --> JanGerritse2["Jan Gerritse Decker (1688 - ?)\nBorn Kingston, NY, died Romney, WV"]
+    MargarietGrietjen["Margariet Grietjen Decker (c. 1664)"] -- "Parents" --> JanGerritse2
+
+    %% Common Ancestor
+    JanBroerson --> Johannis["Johannis Decker (c. 1685)\nCommon Ancestor\nBuried in Minisink, Orange Co., NY"]
+
+    %% Three Main Branches
+    Johannis --> MajorJohn["Major John Decker (1712 - 1793)\nBuried in Minisink, Orange Co., NY"]
+    Johannis --> PeterNJ["Peter Decker (1711 - ?)\nBuried in Sussex Co., NJ"]
+    Johannis --> TobiasLine["Tobias Decker (? - 1759)\nKilled in Indian attack"]
+
+    %% Isaac's Line (Pennsylvania Branch)
+    MajorJohn --> Isaac["Isaac Decker (1743 - ~1840)"]
+    Isaac -- "Spouse" --> Dorcas["Dorcas Chamberlain (~1750)"]
+
+    Isaac --> Christopher["Christopher Decker (~1780)\nBorn in Cumberland Co., PA"]
+    Isaac --> Daniel1787["Daniel Decker (~1787 - 1840)\nBorn in Sussex Co., NJ\nDied in Westmoreland Co., PA"]
+
+    %% Jacob's Line
+    Isaac --> Jacob["Jacob Decker (~1784 - 1835)"]
+    Jacob -- "Spouse" --> ElizabethIrwin["Elizabeth Irwin (~1785)"]
+
+    Jacob --> Daniel1808["Daniel Decker (1808 - 1887)\nDied in St. Clair Twp, Westmoreland Co., PA"]
+    Daniel1808 -- "Spouse" --> SaraMartin["Sara Martin (~1813 - 1885)"]
+
+    Daniel1808 --> CharlesMartin["Charles Martin Decker (1835 - 1871)"]
+    Daniel1808 --> Job["Job Decker (1837 - 1899)"]
+    Daniel1808 --> Martin["Martin Decker (1841 - 1887)"]
+    Daniel1808 --> JamesW["James W. Decker (1843 - 1865)"]
+    Daniel1808 --> WilliamA["William A. Decker (~1843)"]
+    Daniel1808 --> John1844["John Decker (1844 - <1900)"]
+    Daniel1808 --> Chamberlin["Chamberlin Decker (1846)"]
+
+    Job --> SamuelStClair["Samuel St. Clair Decker (1865 - 1930)"]
+    SamuelStClair -- "Spouse" --> AnnaLide["Anna Lide Sharpe (1866 - 1946)"]
+
+    SamuelStClair --> CliffordJ["Clifford J. Decker (1896)\nLived in Pittsburgh"]
+    CliffordJ -- "Spouse" --> AnnaMaeAllebaugh["Anna Mae Allebaugh (~1891)\nBuried: Anna Birmingham Cemetery, Carrick, PA"]
+
+    CliffordJ --> Clifford["Clifford Decker (1915)\nDied in Gainesville, FL"]
+    Clifford -- "Spouse" --> Marjorie["Marjorie (~1919)"]
+
+    Clifford --> Son1["One Son (~1950)"]
+    Clifford --> Son2["Two Son (~1950)"]
+
+    %% Peter's Line (New Jersey Branch)
+    PeterNJ --> PeterLandowner["Peter Decker (Landowner)\nFounder of Deckertown"]
+    PeterLandowner -- "Spouse" --> Magdalena["Magdalena Isterbout"]
+
+    PeterLandowner --> Samuel["Samuel Decker"]
+    PeterLandowner --> Pope["Pope Decker"]
+    PeterLandowner --> Hick["Hick Decker"]
+    PeterLandowner --> Hannah["Hannah Decker"]
+    PeterLandowner --> Maria["Maria Decker"]
+    PeterLandowner --> Catherina["Catherina Decker"]
+    PeterLandowner --> Annetje["Annetje Decker"]
+    PeterLandowner --> Rebecca["Rebecca Decker"]
+
+    PeterNJ --> Josiah["Josiah Decker (1740 - 1814)\nBuried in Clove Cemetery, Sussex Co., NJ"]
+    Josiah --> Bowdewine["Bowdewine Decker (1763 - 1853)\nBuried in Old Clove Church Cemetery"]
+    Bowdewine --> Samuel1790["Samuel Decker (1790 - ?)\nPossibly buried in Clove Cemetery, NJ"]
+    Samuel1790 --> WilliamB["William B. Decker (1825 - 1861)\nBuried in Clove Cemetery, Sussex Co., NJ"]
+
+    %% Tobias Line (West Virginia Branch)
+    TobiasLine -- "Brothers" --> GarrettDecker["Garrett Decker"]
+    TobiasLine -- "Brothers" --> JohnDecker["John Decker"]
+
+    %% Style nodes with more readable colors
+    classDef commonAncestor fill:#e6f7ff,stroke:#0066cc,stroke-width:2px,color:#003366
+    classDef founder fill:#e6ffe6,stroke:#006600,stroke-width:2px,color:#003300
+    classDef mainBranch fill:#fff2e6,stroke:#cc6600,stroke-width:2px,color:#663300
+    classDef pennsylvaniaBranch fill:#f2e6ff,stroke:#6600cc,stroke-width:1px,color:#330066
+    classDef newJerseyBranch fill:#ffe6e6,stroke:#cc0066,stroke-width:1px,color:#660033
+    classDef westVirginiaBranch fill:#e6ffff,stroke:#00cccc,stroke-width:1px,color:#006666
+    classDef default fill:#f9f9f9,stroke:#666666,stroke-width:1px,color:#333333
+
+    class Johannis commonAncestor
+    class PeterLandowner founder
+    class MajorJohn,PeterNJ,TobiasLine mainBranch
+    class Isaac,Jacob,Daniel1808,Job,SamuelStClair,CliffordJ,Clifford pennsylvaniaBranch
+    class Josiah,Bowdewine,Samuel1790,WilliamB newJerseyBranch
+    class GarrettDecker,JohnDecker westVirginiaBranch
 ```
